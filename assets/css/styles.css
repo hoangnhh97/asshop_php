@@ -6,9 +6,8 @@ body {
     @Topbar
 */
 #top-bar {
-    background-color: #fff;
-    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.5);
-    padding: 5px 0;
+    background-color: #2457aa;
+    padding: 10px 0;
 }
 #top-bar ul {
     padding: 0;
@@ -28,7 +27,7 @@ body {
 }
 
 #top-bar ul li a {
-    color: #334141;
+    color: #fff;
     text-decoration: none;
     font-size: 13px;
 }
@@ -39,4 +38,107 @@ body {
     .container {
         max-width: 1430px;
     }
+}
+
+/*
+    @Navbar
+*/
+nav.navbar.navbar-expand-lg.navbar-dark.bg-light {
+    background-color: #1F4C94!important;    
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    font-size: 3em;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+}
+
+form#search-bar {
+    margin: 0 15px;
+    background-color: #fff;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+form#search-bar #ddlCategories {
+    border-radius: 3px 0 0 3px;
+    border: 0;
+    border-right: 1px solid #f5f5f5;
+    outline: 0;
+}
+
+form#search-bar input {
+    border-radius: 0;
+    border: 0;
+    border-right: 1px solid #f5f5f5;
+    outline: 0;
+    box-shadow: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+}
+
+form#search-bar .btn-search {
+    background-color: #ffd200;
+    padding: 10px 15px;
+    border:0;
+    outline: 0;
+    border-radius: 0px 3px 3px 0;
+    -webkit-border-radius: 0px 3px 3px 0;
+    -moz-border-radius: 0px 3px 3px 0;
+    -ms-border-radius: 0px 3px 3px 0;
+    -o-border-radius: 0px 3px 3px 0;
+}
+
+form#search-bar .btn-search:focus, 
+form#search-bar input:focus, 
+form#search-bar #ddlCategories:focus {
+    outline: 0;
+    box-shadow:none!important;
+}
+
+li.cart {
+    position: relative;
+}
+
+#shop-cart li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+#shop-cart li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+#shop-cart ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#shop-cart li:last-child {
+    margin: 0;
+}
+
+#shop-cart li.cart a span {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    background-color: #ffd200;
+    color: #333;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 12px;
 }
