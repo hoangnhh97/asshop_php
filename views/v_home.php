@@ -7,7 +7,7 @@
     <div class="owl-carousel owl-theme">
         <div class="item">
             <div class="item-banner">
-                <img src="./assets/images/banner-2.jpg"/>
+                <img src="./assets/images/banner-1.jpg"/>
             </div>
             <div class="item-text">
                 <h3>Arrival Offer Available <br/> <span>Upto 40% Flat</span></h3>

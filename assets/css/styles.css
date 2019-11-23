@@ -225,4 +225,42 @@ footer {
     text-align: right;
 }
 
-#slider .item:before {content: "";background-color: rgba(0, 0, 0, 0.15);position: absolute;top: 0;bottom: 0;left: 0;right: 0;z-index: 0;}
+#slider .item:before {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.15);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}
+section#slider {
+    position: relative;
+}
+
+.owl-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.owl-theme .owl-nav {
+    width:100%;
+    font-size: 3em;
+    color: #fff
+}
+#slider button.owl-prev {
+    float: left;
+}
+
+#slider button.owl-next {
+    float: right;
+}
+
+#slider .owl-theme .owl-nav button span {
+    padding: 0;
+}
+
+.owl-theme .owl-nav [class*=owl-]:hover {
+    background-color: transparent;
+}
