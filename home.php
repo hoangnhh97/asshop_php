@@ -1,6 +1,5 @@
 <?php 
     include_once("routes/Routes.php");
-
     function __autoload($className) {
         if(file_exists("./models/".$className.".php")) {
             require_once("./models/".$className.".php");
