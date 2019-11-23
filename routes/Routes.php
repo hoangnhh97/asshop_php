@@ -1,12 +1,12 @@
 <?php 
 
     Route::set('home.php', function() {
-        Home::CreateView("Home");
+        HomeController::CreateView("v_home");
     });
 
 
     Route::set('about-us', function() {
-        AboutUs::CreateView("AboutUs");
+        AboutUsController::CreateView("v_about_us");
     });
 
 
