@@ -142,3 +142,56 @@ li.cart {
     border-radius: 50%;
     font-size: 12px;
 }
+
+/*
+    @Footer
+*/
+footer {
+    background-color: #2457aa;
+    padding: 30px 0;
+}
+
+.footer {
+    border-bottom: 1px solid rgb(62, 107, 179);
+}
+
+.list-payment-sprite {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.list-payment-sprite li {
+    display: inline-block;
+}
+
+.method-1,
+.method-2,
+.method-3 {
+    display: block;
+    width:40px;
+    height:30px;
+}
+
+.method-1 {
+    background: url('../images/payment-sprite.png');
+    background-repeat: no-repeat;
+    background-position: 0px 4px;
+
+}
+
+.method-2 {
+    background: url('../images/payment-sprite.png');
+    background-repeat: no-repeat;
+    background-position: 0px -75px;
+}
+
+.method-3 {
+    background: url('../images/payment-sprite.png');
+    background-repeat: no-repeat;
+    background-position: 0px -550px;
+    
+}
+
+.copyright p {
+    margin: 0;
+}
