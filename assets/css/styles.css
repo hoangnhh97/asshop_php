@@ -195,3 +195,34 @@ footer {
 .copyright p {
     margin: 0;
 }
+
+/*
+    @Slider
+*/
+#slider .item {
+    position: relative;
+}
+#slider .item .item-text {
+    position: absolute;
+    top: 50%;
+    transform: translate(-20%, -50%);
+    left: 20%;
+    z-index: 2;
+    color: #333;
+}
+
+#slider .item .item-text h3 {
+    font-size: 3em;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+#slider .item .item-text h3 span {
+    font-weight: bold;
+}
+
+#slider .item .item-text p {
+    text-align: right;
+}
+
+#slider .item:before {content: "";background-color: rgba(0, 0, 0, 0.15);position: absolute;top: 0;bottom: 0;left: 0;right: 0;z-index: 0;}
