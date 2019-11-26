@@ -275,6 +275,7 @@ section#slider {
 .h-title h2 {
     display: inline-block;
     position: relative;
+    font-weight: bold;
 }
 
 .h-title h2:after {
@@ -364,4 +365,103 @@ section#slider {
 }
 .hot-deal-box .item:hover .group-button ul li a:hover {
     background-color:#ffd200;
+}
+
+section#list-cate {
+    background-color: #f5f5f5;
+}
+
+section#list-cate .item {
+    background-color: transparent;
+}
+
+.item .cate-img img {
+    border-radius: 50%;
+    max-width: 150px;
+}
+.h-title-gray h2 {
+    color: #333;
+    font-weight: bold;
+}
+
+.h-title-gray h2 span {
+    color: #555;
+    font-size: 14px;
+    margin-left: 15px;
+    font-weight: normal;
+}
+
+.h-title-gray {
+    margin-bottom: 30px;
+}
+
+/*
+    @Home page
+*/
+.nav-list-tab ul {
+    border: 0;
+    padding: 0!important;
+    margin: 0!important;
+}
+.clothes-item-body a {
+    text-decoration: none;
+
+}
+.clothes-item-body h3 a {
+    font-size: 1em;
+    color: #707070;
+}
+.price .old-price {
+    text-decoration: line-through;
+    font-size: 15px;
+    color: #707070;
+    margin-right: 15px;
+}
+
+.clothes-item-inner {
+    border-right: 1px solid #f5f5f5;
+    padding: 15px;
+}
+
+.price .primary-price {
+    font-size: 20px;
+    color: #2457aa;
+    font-weight: bold;
+    
+    
+}
+
+.clothes-item-body p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    color: #555;
+}
+a.btn-buy-now.btn.btn-primary {
+    background-color: #2457aa;
+    border-color: #2457aa;
+}
+
+a.btn-add-to-cart.btn.btn-warning {
+    background-color: #ffd200;
+}
+
+.clothes-item:last-child .clothes-item-inner {
+    border: 0;
+}
+
+.clothes-item-head a img {
+    max-height: 347px;
+    overflow: hidden;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #2457aa;
+    border-radius: 0;
+}
+
+.nav-pills .nav-link {
+    color: #555;
 }

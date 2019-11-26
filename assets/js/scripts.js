@@ -9,7 +9,7 @@ $(document).ready(function() {
 
     
     $('#list-cate .owl-carousel').owlCarousel({
-        loop:true,
+        loop:false,
         margin:0,
         nav:false,
         dots:false,
@@ -24,5 +24,13 @@ $(document).ready(function() {
         items: 1
     });
 
+
+    $('#partner-logo .owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        dots: false,
+        items: 7
+    });
 
 });

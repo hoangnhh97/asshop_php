@@ -27,56 +27,48 @@
 </section>
 
 
-<section id="list-cate">
+<section id="list-cate" class="pt-5 pb-5">
     <div class="container">
+        <div class="h-title-gray">
+            <h2>Danh mục sản phẩm <span>Chọn sản phẩm bạn đang tìm kiếm</span></h2>
+        </div>
         <div class="owl-carousel owl-theme">
             <div class="item">
-                <h1></h1>
+                <div class="cate-img">
+                    <a href=""><img src="./assets/images/cat-balo.jpg" /></a>
+                </div>
             </div>
             <div class="item">
-                <h1>Cate2</h1>
-            </div>
-            <div class="item">
-                <h1>Cate2</h1>
-            </div>
-            <div class="item">
-                <h1>Cate2</h1>
-            </div>
-            <div class="item">
-                <h1>Cate2</h1>
-            </div>
-            <div class="item">
-                <h1>Cate2</h1>
-            </div>
-            <div class="item">
-                <h1>Cate2</h1>
+                <div class="cate-img">
+                    <a href=""><img src="./assets/images/cat-giay.jpg" /></a>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<section id="ads-block-sec">
+<section id="ads-block-sec" class="pt-5 pb-5">
     <div class="container">
         <div class="row">
             <div class="ads-block ads-block-1 col-md-6">
-                <img src="./assets/images/ads-1.png" width="100%"/>
+                <a href=""><img src="http://wordpress.templatemela.com/woo/WCM04/WCM040092/WP1/wp-content/uploads/2019/03/Sub-banner-07.jpg" width="100%"/></a>
             </div>
             <div class="ads-block ads-block-2 col-md-6">
-                <img src="./assets/images/ads-2.png" width="100%"/>
+                <a href=""><img src="http://wordpress.templatemela.com/woo/WCM04/WCM040092/WP1/wp-content/uploads/2019/03/Sub-banner-08.jpg" width="100%"/></a>
             </div>
         </div>
     </div>
 </section>
 
 <!--- BEGIN hot deal --->
-<section id="sec-hot-deal" class="pt-3 pb-3">
+<section id="sec-hot-deal" class="pt-5 pb-5">
     <div class="container">
-        <div class="h-title">
+        <div class="h-title text-danger">
             <h2>Hot Deal</h2>
         </div>
         <div class="row">
             <div class="hot-deal-1 col-md-6">
-                <div class="hot-deal-box pt-3 pb-3">
+                <div class="hot-deal-box pt-5 pb-5">
                     <div class="owl-carousel owl-theme">
                         <!--- BEGIN item --->
                         <div class="item">
@@ -151,7 +143,7 @@
                 </div>
             </div>
             <div class="hot-deal-2 col-md-6">
-                <div class="hot-deal-box pt-3 pb-3">
+                <div class="hot-deal-box pt-5 pb-5">
                     <div class="owl-carousel owl-theme">
                         <!--- BEGIN item --->
                         <div class="item">
@@ -230,6 +222,173 @@
 <!--- END hot deal --->
 
 <section id="sec-clothes">
+    <div class="container">
+        <div class="h-title">
+            <h2>Chuyên Các Loại Áo</h2>
+            <div class="nav-list-tab float-right">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-clothes1-default-tab" data-toggle="pill" href="#pills-clothes1-default" role="tab" aria-controls="pills-home" aria-selected="true">Mới nhất</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-clothes2-tab" data-toggle="pill" href="#pills-clothes2" role="tab" aria-controls="pills-profile" aria-selected="false">Áo sơ mi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-clothes3" role="tab" aria-controls="pills-contact" aria-selected="false">Áo thun</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+       <div class="clothes-content pt-3 pb-3">
+            <div class="row">
+                <div class="col-md-3 mt-3">
+                    <img src="./assets/images/clothes-left-1.jpg" width="100%"/>
+                </div>
+                <div class="tab-content col-md-9" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-clothes1-default" role="tabpanel" aria-labelledby="pills-clothes1-default-tab">
+                        <div class="row">
+                            <?php 
+                                $data = HomeController::showAllProductLastest();
+                                foreach($data as $item) {
+                                    $permalink = "/chi-tiet/?title=".$item["name"]."&id=".$item["product_id"]."";
+                            ?>
+                            <div class="clothes-item col-md-4">
+                                <div class="clothes-item-inner">
+                                    <div class="clothes-item-head">
+                                        <a href="<?php Common::checkEmptyStr($permalink); ?>">
+                                            <img src="./assets/images/products/<?php echo $item["image"]; ?>"/>
+                                        </a>
+                                    </div>
+                                    <div class="clothes-item-body">
+                                        <h3>
+                                            <a href="<?php Common::checkEmptyStr($permalink); ?>">
+                                                <?php Common::checkEmptyStr($item["name"]); ?>
+                                            </a>
+                                        </h3>
+                                        <p><?php Common::checkEmptyStr($item["description"]) ?></p>
+                                        <div class="price">
+                                            <span class="<?php echo Common::checkEmptyBoolean($item["new_price"])? "old-price": "primary-price" ?>">
+                                                <?php Common::checkEmptyStr(number_format($item["price"])); ?>
+                                                <span>₫</span>
+                                            </span>
+                                            <?php if(Common::checkEmptyBoolean($item["new_price"])) { ?>
+                                                <span class="primary-price">
+                                                    <?php Common::checkEmptyStr(number_format($item["new_price"])); ?>
+                                                    <span>₫</span> 
+                                                </span>
+                                            <?php } ?>
+                                        </div>
+                                        <div class="btn-control mt-3">
+                                            <span><a href="" class="btn-buy-now btn btn-primary">Mua ngay</a></span>
+                                            <span><a href="" class="btn-add-to-cart btn btn-warning">Thêm vào giỏ hàng</a></span>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-clothes2" role="tabpanel" aria-labelledby="pills-clothes2-tab">
+                        <?php 
+                            $data = HomeController::show_Product_AoSoMi();
+                            foreach($data as $item) {
+                                $permalink = "/chi-tiet/?title=".$item["name"]."&id=".$item["product_id"]."";
+                        ?>
+                        <div class="clothes-item col-md-4">
+                            <div class="clothes-item-inner">
+                                <div class="clothes-item-head">
+                                    <a href="<?php Common::checkEmptyStr($permalink); ?>">
+                                        <img src="./assets/images/products/<?php echo $item["image"]; ?>"/>
+                                    </a>
+                                </div>
+                                <div class="clothes-item-body">
+                                    <h3>
+                                        <a href="<?php Common::checkEmptyStr($permalink); ?>">
+                                            <?php Common::checkEmptyStr($item["name"]); ?>
+                                        </a>
+                                    </h3>
+                                    <p><?php Common::checkEmptyStr($item["description"]) ?></p>
+                                    <div class="price">
+                                        <span class="<?php echo Common::checkEmptyBoolean($item["new_price"])? "old-price": "primary-price" ?>">
+                                            <?php Common::checkEmptyStr(number_format($item["price"])); ?>
+                                            <span>₫</span>
+                                        </span>
+                                        <?php if(Common::checkEmptyBoolean($item["new_price"])) { ?>
+                                            <span class="primary-price">
+                                                <?php Common::checkEmptyStr(number_format($item["new_price"])); ?>
+                                                <span>₫</span> 
+                                            </span>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="btn-control mt-3">
+                                        <span><a href="" class="btn-buy-now btn btn-primary">Mua ngay</a></span>
+                                        <span><a href="" class="btn-add-to-cart btn btn-warning">Thêm vào giỏ hàng</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php } ?>
+                    </div>
+                    <div class="tab-pane fade" id="pills-clothes3" role="tabpanel" aria-labelledby="pills-clothes3-tab">
+                        <?php 
+                            $data = HomeController::show_Product_AoThun();
+                            foreach($data as $item) {
+                                $permalink = "/chi-tiet/?title=".$item["name"]."&id=".$item["product_id"]."";
+                        ?>
+                        <div class="clothes-item col-md-4">
+                            <div class="clothes-item-inner">
+                                <div class="clothes-item-head">
+                                    <a href="<?php Common::checkEmptyStr($permalink); ?>">
+                                        <img src="./assets/images/products/<?php echo $item["image"]; ?>"/>
+                                    </a>
+                                </div>
+                                <div class="clothes-item-body">
+                                    <h3>
+                                        <a href="<?php Common::checkEmptyStr($permalink); ?>">
+                                            <?php Common::checkEmptyStr($item["name"]); ?>
+                                        </a>
+                                    </h3>
+                                    <p><?php Common::checkEmptyStr($item["description"]) ?></p>
+                                    <div class="price">
+                                        <span class="<?php echo Common::checkEmptyBoolean($item["new_price"])? "old-price": "primary-price" ?>">
+                                            <?php Common::checkEmptyStr(number_format($item["price"])); ?>
+                                            <span>₫</span>
+                                        </span>
+                                        <?php if(Common::checkEmptyBoolean($item["new_price"])) { ?>
+                                            <span class="primary-price">
+                                                <?php Common::checkEmptyStr(number_format($item["new_price"])); ?>
+                                                <span>₫</span> 
+                                            </span>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="btn-control mt-3">
+                                        <span><a href="" class="btn-buy-now btn btn-primary">Mua ngay</a></span>
+                                        <span><a href="" class="btn-add-to-cart btn btn-warning">Thêm vào giỏ hàng</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+       </div>
+        
+    </div>
+</section>
+
+
+<section id="partner-logo" class="pt-5 pb-5">
+    <div class="container">
+        <div class="owl-carousel owl-theme">
+            <div class="item"><img src="./assets/images/partners/brand1.jpg"/></div>
+            <div class="item"><img src="./assets/images/partners/brand2.jpg"/></div>
+            <div class="item"><img src="./assets/images/partners/brand3.jpg"/></div>
+            <div class="item"><img src="./assets/images/partners/brand4.jpg"/></div>
+        </div>
+    </div>
 
 </section>
 

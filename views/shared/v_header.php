@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title>Header</title>
+        <title>Home</title>
 
         <link href="assets/css/all.min.css" rel="stylesheet"/>
         <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
