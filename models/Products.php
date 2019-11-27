@@ -32,7 +32,7 @@
                 $db = DBConnection::GetDB();
                 $query = "SELECT DISTINCT * FROM product_with_cate pwc, category c, products p 
                         WHERE pwc.category_id=c.category_id AND pwc.product_id = p.product_id
-                        AND pwc.category_id =:cateid ORDER BY p.created_at LIMIT 5";
+                        AND pwc.category_id =:cateid ORDER BY p.created_at LIMIT 4";
                 $stmt = $db->prepare($query);
                 $stmt->bindParam(":cateid", $cate_id);
                 $stmt->execute();
@@ -60,6 +60,7 @@
                 return array();
             }
         }
+
 
     }
 

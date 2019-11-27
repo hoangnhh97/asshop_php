@@ -268,17 +268,20 @@ section#slider {
 /*
     @ Deal of the day
 */
-.h-title {
+.h-title,
+.h-related {
     border-bottom: 3px solid #f5f5f5;
 }
 
-.h-title h2 {
+.h-title h2,
+.h-related h2 {
     display: inline-block;
     position: relative;
     font-weight: bold;
 }
 
-.h-title h2:after {
+.h-title h2:after,
+.h-related h2:after {
     content: "";
     border-bottom: 3px solid #2457aa;
     position: absolute;

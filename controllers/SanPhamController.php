@@ -6,5 +6,11 @@
             $result = $product->getSingleProduct($product_id);
             return $result;
         }
+
+        public static function show_Current_CategoryId($product_id) {
+            $cate = new Category();
+            $result = $cate->getCategoryId($product_id);
+            return $result;
+        }
     }
 ?>
