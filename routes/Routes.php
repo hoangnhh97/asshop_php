@@ -10,8 +10,8 @@
     });
 
 
-    Route::set('chi-tiet', function() {
-        ChiTietController::CreateView("v_chi_tiet");
+    Route::set('san-pham', function() {
+        SanPhamController::CreateView("v_san_pham");
     });
 
 
