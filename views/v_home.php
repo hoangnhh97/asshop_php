@@ -71,72 +71,56 @@
                 <div class="hot-deal-box pt-5 pb-5">
                     <div class="owl-carousel owl-theme">
                         <!--- BEGIN item --->
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="./assets/images/products/a-1.jpg" />
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="item-head">
-                                        <h1>Tiêu đề sp</h1>
-                                        <div class="rating">*</div>
-                                        <div class="price">600.000đ</div>
+                            <?php 
+                                $data = HomeController::show_Hot_Deal(0);
+                                foreach($data as $item) {
+                                    $permalink = "/chi-tiet/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+                            ?>
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img src="./assets/images/products/<?php Common::checkEmptyStr($item["image"]); ?>" />
                                     </div>
-                                    <div class="item-body">
-                                        <p class="desc"></p>
-                                        <div class="count-down">
-                                            <ul>
-                                                <li><span class="days">1</span> <br><span>Days</span></li>
-                                                <li><span class="hours">24</span> <br><span>Hours</span></li>
-                                                <li><span class="minutes">60</span> <br><span>Mins</span></li>
-                                                <li><span class="seconds">60</span> <br><span>Secs</span></li>
-                                            </ul>
+                                    <div class="col-md-8">
+                                        <div class="item-head">
+                                            <h1><a href="<?php Common::checkEmptyStr($permalink); ?>"><?php Common::checkEmptyStr($item["name"]); ?></a></h1>
+                                            <div class="rating">*</div>
+                                            <div class="price">
+                                                <span class="<?php echo Common::checkEmptyBoolean($item["new_price"])? "old-price": "primary-price" ?>">
+                                                    <?php Common::checkEmptyStr(number_format($item["price"])); ?>
+                                                    <span>₫</span>
+                                                </span>
+                                                <?php if(Common::checkEmptyBoolean($item["new_price"])) { ?>
+                                                    <span class="primary-price">
+                                                        <?php Common::checkEmptyStr(number_format($item["new_price"])); ?>
+                                                        <span>₫</span> 
+                                                    </span>
+                                                <?php } ?>
+                                            </div>
                                         </div>
-                                        <div class="group-button">
-                                            <ul>
-                                                <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
-                                                <li><a href=""><i class="fa fa-eye"></i></a></li>
-                                                <li><a href=""><i class="fa fa-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                        <!--- END item --->
-                        <!--- BEGIN item --->
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="./assets/images/products/a-2.jpg" />
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="item-head">
-                                        <h1>Tiêu đề sp</h1>
-                                        <div class="rating">*</div>
-                                        <div class="price">400.000đ</div>
-                                    </div>
-                                    <div class="item-body">
-                                        <p class="desc"></p>
-                                        <div class="count-down">
-                                            <ul>
-                                                <li>03 <br><span>Days</span></li>
-                                                <li>03 <br><span>Hours</span></li>
-                                                <li>03 <br><span>Mins</span></li>
-                                                <li>03 <br><span>Secs</span></li>
-                                            </ul>
-                                        </div>
-                                        <div class="group-button">
-                                            <ul>
-                                                <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
-                                                <li><a href=""><i class="fa fa-eye"></i></a></li>
-                                                <li><a href=""><i class="fa fa-heart"></i></a></li>
-                                            </ul>
+                                        <div class="item-body">
+                                            <p class="desc"></p>
+                                            <div class="count-down">
+                                                <ul>
+                                                    <li><span class="days"><?php Common::checkEmptyStr($item["days"]); ?></span> <br><span>Days</span></li>
+                                                    <li><span class="hours"><?php Common::checkEmptyStr($item["hours"]); ?></span> <br><span>Hours</span></li>
+                                                    <li><span class="minutes"><?php Common::checkEmptyStr($item["mins"]); ?></span> <br><span>Mins</span></li>
+                                                    <li><span class="seconds"><?php Common::checkEmptyStr($item["secs"]); ?></span> <br><span>Secs</span></li>
+                                                </ul>
+                                            </div>
+                                            <div class="group-button">
+                                                <ul>
+                                                    <li><a href="javascript:;"><i class="fa fa-shopping-cart"></i></a></li>
+                                                    <li><a href="<?php Common::checkEmptyStr($permalink) ?>"><i class="fa fa-eye"></i></a></li>
+                                                    <li><a href="javascript:;"><i class="fa fa-heart"></i></a></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div> 
+                            </div> 
+                        <?php } ?>
+                        
                         <!--- END item --->
 
                     </div>
@@ -146,73 +130,57 @@
                 <div class="hot-deal-box pt-5 pb-5">
                     <div class="owl-carousel owl-theme">
                         <!--- BEGIN item --->
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="./assets/images/products/a-1.jpg" />
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="item-head">
-                                        <h1>Tiêu đề sp</h1>
-                                        <div class="rating">*</div>
-                                        <div class="price">600.000đ</div>
+                        <?php 
+                                $data = HomeController::show_Hot_Deal(1);
+                                foreach($data as $item) {
+                                    $permalink = "/chi-tiet/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+                            ?>
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img src="./assets/images/products/<?php Common::checkEmptyStr($item["image"]); ?>" />
                                     </div>
-                                    <div class="item-body">
-                                        <p class="desc"></p>
-                                        <div class="count-down">
-                                            <ul>
-                                                <li><span class="days">1</span> <br><span>Days</span></li>
-                                                <li><span class="hours">24</span> <br><span>Hours</span></li>
-                                                <li><span class="minutes">60</span> <br><span>Mins</span></li>
-                                                <li><span class="seconds">60</span> <br><span>Secs</span></li>
-                                            </ul>
+                                    <div class="col-md-8">
+                                        <div class="item-head">
+                                            <h1><a href="<?php Common::checkEmptyStr($permalink); ?>"><?php Common::checkEmptyStr($item["name"]); ?></a></h1>
+                                            <div class="rating">*</div>
+                                            <div class="price">
+                                                <span class="<?php echo Common::checkEmptyBoolean($item["new_price"])? "old-price": "primary-price" ?>">
+                                                    <?php Common::checkEmptyStr(number_format($item["price"])); ?>
+                                                    <span>₫</span>
+                                                </span>
+                                                <?php if(Common::checkEmptyBoolean($item["new_price"])) { ?>
+                                                    <span class="primary-price">
+                                                        <?php Common::checkEmptyStr(number_format($item["new_price"])); ?>
+                                                        <span>₫</span> 
+                                                    </span>
+                                                <?php } ?>
+                                            </div>
                                         </div>
-                                        <div class="group-button">
-                                            <ul>
-                                                <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
-                                                <li><a href=""><i class="fa fa-eye"></i></a></li>
-                                                <li><a href=""><i class="fa fa-heart"></i></a></li>
-                                            </ul>
+                                        <div class="item-body">
+                                            <p class="desc"></p>
+                                            <div class="count-down">
+                                                <ul>
+                                                    <li><span class="days"><?php Common::checkEmptyStr($item["days"]); ?></span> <br><span>Days</span></li>
+                                                    <li><span class="hours"><?php Common::checkEmptyStr($item["hours"]); ?></span> <br><span>Hours</span></li>
+                                                    <li><span class="minutes"><?php Common::checkEmptyStr($item["mins"]); ?></span> <br><span>Mins</span></li>
+                                                    <li><span class="seconds"><?php Common::checkEmptyStr($item["secs"]); ?></span> <br><span>Secs</span></li>
+                                                </ul>
+                                            </div>
+                                            <div class="group-button">
+                                                <ul>
+                                                    <li><a href="javascript:;"><i class="fa fa-shopping-cart"></i></a></li>
+                                                    <li><a href="<?php Common::checkEmptyStr($permalink) ?>"><i class="fa fa-eye"></i></a></li>
+                                                    <li><a href="javascript:;"><i class="fa fa-heart"></i></a></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div> 
+                            </div> 
+                        <?php } ?>
                         <!--- END item --->
-                        <!--- BEGIN item --->
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="./assets/images/products/a-2.jpg" />
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="item-head">
-                                        <h1>Tiêu đề sp</h1>
-                                        <div class="rating">*</div>
-                                        <div class="price">400.000đ</div>
-                                    </div>
-                                    <div class="item-body">
-                                        <p class="desc"></p>
-                                        <div class="count-down">
-                                            <ul>
-                                                <li>03 <br><span>Days</span></li>
-                                                <li>03 <br><span>Hours</span></li>
-                                                <li>03 <br><span>Mins</span></li>
-                                                <li>03 <br><span>Secs</span></li>
-                                            </ul>
-                                        </div>
-                                        <div class="group-button">
-                                            <ul>
-                                                <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
-                                                <li><a href=""><i class="fa fa-eye"></i></a></li>
-                                                <li><a href=""><i class="fa fa-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                        <!--- END item --->
+                        
                     </div>
                 </div>
             </div>
@@ -240,18 +208,18 @@
             </div>
         </div>
         
-       <div class="clothes-content pt-3 pb-3">
+       <div class="clothes-content">
             <div class="row">
-                <div class="col-md-3 mt-3">
-                    <img src="./assets/images/clothes-left-1.jpg" width="100%"/>
+                <div class="col-md-3">
+                    <img src="./assets/images/cat-left-banner01.png" width="100%"/>
                 </div>
-                <div class="tab-content col-md-9" id="pills-tabContent">
+                <div class="tab-content col-md-9 pt-3 pb-3" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-clothes1-default" role="tabpanel" aria-labelledby="pills-clothes1-default-tab">
                         <div class="row">
                             <?php 
                                 $data = HomeController::showAllProductLastest();
                                 foreach($data as $item) {
-                                    $permalink = "/chi-tiet/?title=".$item["name"]."&id=".$item["product_id"]."";
+                                    $permalink = "/chi-tiet/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
                             ?>
                             <div class="clothes-item col-md-4">
                                 <div class="clothes-item-inner">
@@ -292,9 +260,9 @@
                     </div>
                     <div class="tab-pane fade" id="pills-clothes2" role="tabpanel" aria-labelledby="pills-clothes2-tab">
                         <?php 
-                            $data = HomeController::show_Product_AoSoMi();
+                            $data = HomeController::show_Product_By_Cate(2);
                             foreach($data as $item) {
-                                $permalink = "/chi-tiet/?title=".$item["name"]."&id=".$item["product_id"]."";
+                                $permalink = "/chi-tiet/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
                         ?>
                         <div class="clothes-item col-md-4">
                             <div class="clothes-item-inner">
@@ -333,9 +301,9 @@
                     </div>
                     <div class="tab-pane fade" id="pills-clothes3" role="tabpanel" aria-labelledby="pills-clothes3-tab">
                         <?php 
-                            $data = HomeController::show_Product_AoThun();
+                            $data = HomeController::show_Product_By_Cate(3);
                             foreach($data as $item) {
-                                $permalink = "/chi-tiet/?title=".$item["name"]."&id=".$item["product_id"]."";
+                                $permalink = "/chi-tiet/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
                         ?>
                         <div class="clothes-item col-md-4">
                             <div class="clothes-item-inner">

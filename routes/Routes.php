@@ -10,4 +10,9 @@
     });
 
 
+    Route::set('chi-tiet', function() {
+        ChiTietController::CreateView("v_chi_tiet");
+    });
+
+
 ?>

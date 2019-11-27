@@ -45,6 +45,22 @@
             }
         }
 
+        public function getSingleProduct($product_id) {
+            try {
+                $db = DBConnection::GetDB();
+                $query = "SELECT * FROM products WHERE product_id=:product_id";
+                $stmt = $db->prepare($query);
+                $stmt->bindParam(":product_id", $product_id);
+                $stmt->execute();
+
+                $result = $stmt->fetch();
+                $db = null;
+                return $result;
+            } catch(PDOException $e) {
+                return array();
+            }
+        }
+
     }
 
 

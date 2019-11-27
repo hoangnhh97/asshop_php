@@ -25,11 +25,12 @@
         </footer>
         
         <!--- BEGIN area_js --->
-        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-        <script type="text/javascript" src="assets/js/all.min.js"></script>
-        <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
-        <script type="text/javascript" src="assets/js/scripts.js"></script>
+        <script type="text/javascript" src="http://localhost:8888/asshop/assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="http://localhost:8888/asshop/assets/js/popper.min.js"></script>
+        <script type="text/javascript" src="http://localhost:8888/asshop/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://localhost:8888/asshop/assets/js/all.min.js"></script>
+        <script type="text/javascript" src="http://localhost:8888/asshop/assets/js/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="http://localhost:8888/asshop/assets/js/scripts.js"></script>
         <!--- END area_js --->
     </body>
 </html>

@@ -409,7 +409,7 @@ section#list-cate .item {
 }
 .clothes-item-body h3 a {
     font-size: 1em;
-    color: #707070;
+    color: #1f4c94;
 }
 .price .old-price {
     text-decoration: line-through;
@@ -430,7 +430,9 @@ section#list-cate .item {
     
     
 }
-
+.clothes-item-body h3 {
+    font-size: 18px;
+}
 .clothes-item-body p {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -438,6 +440,8 @@ section#list-cate .item {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     color: #555;
+    font-size: 13px;
+    font-style: italic
 }
 a.btn-buy-now.btn.btn-primary {
     background-color: #2457aa;
@@ -464,4 +468,34 @@ a.btn-add-to-cart.btn.btn-warning {
 
 .nav-pills .nav-link {
     color: #555;
+}
+
+#partner-logo .owl-nav {
+    display: block!important;
+}
+
+#partner-logo .owl-nav .owl-prev {
+    float: left;
+    
+}
+
+#partner-logo .owl-nav .owl-next {
+    float: right;
+    
+}
+#partner-logo .owl-nav {
+    color: #2457aa;
+    
+}
+
+#partner-logo .owl-nav button {
+    transition: all .3s ease;
+}
+
+#partner-logo .owl-nav button:hover {
+    color: #555;
+}
+
+.btn-control span a {
+    font-size: 12px;
 }

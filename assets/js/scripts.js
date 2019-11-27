@@ -1,4 +1,14 @@
 $(document).ready(function() {
+    $('#partner-logo .owl-carousel').owlCarousel({
+        loop: true,
+        center: true,
+        margin: 10,
+        nav: true,
+        dots: false,
+        lazyLoad:true,
+        items: 7
+    });
+
     $('#slider .owl-carousel').owlCarousel({
         loop:true,
         margin:0,
@@ -25,12 +35,5 @@ $(document).ready(function() {
     });
 
 
-    $('#partner-logo .owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        dots: false,
-        items: 7
-    });
-
+    
 });

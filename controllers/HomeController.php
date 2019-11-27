@@ -1,5 +1,4 @@
 <?php 
-include_once("./models/Products.php");
 class HomeController extends BaseController {
     public static function showAllProductLastest() {
         $products = new Products();
@@ -8,16 +7,15 @@ class HomeController extends BaseController {
     }
 
 
-    public static function show_Product_AoSoMi() {
+    public static function show_Product_By_Cate($cate_id) {
         $products = new Products();
-        $result = $products->getAllProductByCate(2);
+        $result = $products->getAllProductByCate($cate_id);
         return $result;
     }
 
-
-    public static function show_Product_AoThun() {
-        $products = new Products();
-        $result = $products->getAllProductByCate(3);
+    public static function show_Hot_Deal($type) {
+        $hotdeal = new HotDeal();
+        $result = $hotdeal->getHotDealByType($type);
         return $result;
     }
 }
