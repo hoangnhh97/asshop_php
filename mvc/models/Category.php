@@ -1,8 +1,7 @@
 <?php 
-    include_once("./configs/DBConnection.php");
 
-    class Category {
-        private static $db;
+    class Category extends DBConnection{
+        protected $con;
 
         public function __construct()
         {
@@ -12,14 +11,14 @@
 
         public function getCategoryId($product_id) {
             try {
-                $db = DBConnection::GetDB();
+                $con = $this->GetDB();
                 $query = "SELECT DISTINCT * FROM product_with_cate WHERE product_id=:product_id";
-                $stmt = $db->prepare($query);
+                $stmt = $con->prepare($query);
                 $stmt->bindParam(":product_id", $product_id);
                 $stmt->execute();
 
                 $result = $stmt->fetch();
-                $db = null;
+                $con = null;
                 return $result;
             } catch(PDOException $e) {
                 return array();

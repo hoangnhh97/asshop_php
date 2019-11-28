@@ -514,3 +514,27 @@ div#alert-box {
     z-index: 99999;
     border-radius: 0;
 }
+
+/*
+    @ Bread crumb
+*/
+section#breadcrumb ul {
+    padding: 15px 0;
+    margin: 0;
+    list-style: none;
+}
+
+section#breadcrumb ul li {
+    display: inline-block;
+    padding: 0;
+}
+
+section#breadcrumb ul li a {
+    padding: 0;
+    text-decoration: none;
+    color: #555;
+    font-size: 13px;
+}
+
+section#breadcrumb ul li:after {content: " » ";}
+section#breadcrumb ul li:last-child:after { content: ""}

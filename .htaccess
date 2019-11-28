@@ -1,6 +1,6 @@
-Options +FollowSymLinks
-
+  
 RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
 
-RewriteRule ^([^/]+)/?$ home.php?url=$1 [L,QSA]
-RewriteRule ^([^/]+)/?/(.*)/([0-9]+)$ home.php?url=$1&title=$2&id=$3 [L,QSA]
+RewriteRule ^(.+)$ home.php?url=$1

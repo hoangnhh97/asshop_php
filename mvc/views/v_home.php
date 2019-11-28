@@ -1,5 +1,5 @@
 <?php 
-    include_once("./views/shared/v_header.php");
+    include_once("./mvc/views/shared/v_header.php");
 
 ?>
 
@@ -7,7 +7,7 @@
     <div class="owl-carousel owl-theme">
         <div class="item">
             <div class="item-banner">
-                <img src="./assets/images/banner-1.jpg"/>
+                <img src="http://localhost:8888/asshop/assets/images/banner-1.jpg"/>
             </div>
             <div class="item-text">
                 <h3>Arrival Offer Available <br/> <span>Upto 40% Flat</span></h3>
@@ -72,8 +72,8 @@
                     <div class="owl-carousel owl-theme">
                         <!--- BEGIN item --->
                             <?php 
-                                $data = HomeController::show_Hot_Deal(0);
-                                foreach($data as $item) {
+                                
+                                while($item = mysqli_fetch_array($data["hotdeal1"])) {
                                     $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
                             ?>
                             <div class="item">
@@ -131,8 +131,8 @@
                     <div class="owl-carousel owl-theme">
                         <!--- BEGIN item --->
                         <?php 
-                                $data = HomeController::show_Hot_Deal(1);
-                                foreach($data as $item) {
+                                
+                                while($item = mysqli_fetch_array($data["hotdeal2"])) {
                                     $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
                             ?>
                             <div class="item">
@@ -217,8 +217,7 @@
                     <div class="tab-pane fade show active" id="pills-clothes1-default" role="tabpanel" aria-labelledby="pills-clothes1-default-tab">
                         <div class="row">
                             <?php 
-                                $data = HomeController::showAllProductLastest();
-                                foreach($data as $item) {
+                                while($item = mysqli_fetch_array($data["product1"])) {
                                     $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
                             ?>
                             <div class="clothes-item col-md-4">
@@ -259,86 +258,90 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-clothes2" role="tabpanel" aria-labelledby="pills-clothes2-tab">
-                        <?php 
-                            $data = HomeController::show_Product_By_Cate(2);
-                            foreach($data as $item) {
-                                $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
-                        ?>
-                        <div class="clothes-item col-md-4">
-                            <div class="clothes-item-inner">
-                                <div class="clothes-item-head">
-                                    <a href="<?php Common::checkEmptyStr($permalink); ?>">
-                                        <img src="./assets/images/products/<?php echo $item["image"]; ?>"/>
-                                    </a>
-                                </div>
-                                <div class="clothes-item-body">
-                                    <h3>
+                        <div class="row">
+                            <?php 
+                                $row = $data["productAoSoMi"];
+                                foreach($row as $item) {
+                                    $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+                            ?>
+                            <div class="clothes-item col-md-4">
+                                <div class="clothes-item-inner">
+                                    <div class="clothes-item-head">
                                         <a href="<?php Common::checkEmptyStr($permalink); ?>">
-                                            <?php Common::checkEmptyStr($item["name"]); ?>
+                                            <img src="./assets/images/products/<?php echo $item["image"]; ?>"/>
                                         </a>
-                                    </h3>
-                                    <p><?php Common::checkEmptyStr($item["description"]) ?></p>
-                                    <div class="price">
-                                        <span class="<?php echo Common::checkEmptyBoolean($item["new_price"])? "old-price": "primary-price" ?>">
-                                            <?php Common::checkEmptyStr(number_format($item["price"])); ?>
-                                            <span>₫</span>
-                                        </span>
-                                        <?php if(Common::checkEmptyBoolean($item["new_price"])) { ?>
-                                            <span class="primary-price">
-                                                <?php Common::checkEmptyStr(number_format($item["new_price"])); ?>
-                                                <span>₫</span> 
-                                            </span>
-                                        <?php } ?>
                                     </div>
-                                    <div class="btn-control mt-3">
-                                        <span><a href="" class="btn-buy-now btn btn-primary">Mua ngay</a></span>
-                                        <span><a href="" class="btn-add-to-cart btn btn-warning">Thêm vào giỏ hàng</a></span>
+                                    <div class="clothes-item-body">
+                                        <h3>
+                                            <a href="<?php Common::checkEmptyStr($permalink); ?>">
+                                                <?php Common::checkEmptyStr($item["name"]); ?>
+                                            </a>
+                                        </h3>
+                                        <p><?php Common::checkEmptyStr($item["description"]) ?></p>
+                                        <div class="price">
+                                            <span class="<?php echo Common::checkEmptyBoolean($item["new_price"])? "old-price": "primary-price" ?>">
+                                                <?php Common::checkEmptyStr(number_format($item["price"])); ?>
+                                                <span>₫</span>
+                                            </span>
+                                            <?php if(Common::checkEmptyBoolean($item["new_price"])) { ?>
+                                                <span class="primary-price">
+                                                    <?php Common::checkEmptyStr(number_format($item["new_price"])); ?>
+                                                    <span>₫</span> 
+                                                </span>
+                                            <?php } ?>
+                                        </div>
+                                        <div class="btn-control mt-3">
+                                            <span><a href="" class="btn-buy-now btn btn-primary">Mua ngay</a></span>
+                                            <span><a href="" class="btn-add-to-cart btn btn-warning">Thêm vào giỏ hàng</a></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <?php } ?>
                         </div>
-                        <?php } ?>
                     </div>
                     <div class="tab-pane fade" id="pills-clothes3" role="tabpanel" aria-labelledby="pills-clothes3-tab">
-                        <?php 
-                            $data = HomeController::show_Product_By_Cate(3);
-                            foreach($data as $item) {
-                                $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
-                        ?>
-                        <div class="clothes-item col-md-4">
-                            <div class="clothes-item-inner">
-                                <div class="clothes-item-head">
-                                    <a href="<?php Common::checkEmptyStr($permalink); ?>">
-                                        <img src="./assets/images/products/<?php echo $item["image"]; ?>"/>
-                                    </a>
-                                </div>
-                                <div class="clothes-item-body">
-                                    <h3>
+                        <div class="row">
+                            <?php 
+                                $row = $data["productAoThun"];
+                                foreach($row as $item) {
+                                    $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+                            ?>
+                            <div class="clothes-item col-md-4">
+                                <div class="clothes-item-inner">
+                                    <div class="clothes-item-head">
                                         <a href="<?php Common::checkEmptyStr($permalink); ?>">
-                                            <?php Common::checkEmptyStr($item["name"]); ?>
+                                            <img src="./assets/images/products/<?php echo $item["image"]; ?>"/>
                                         </a>
-                                    </h3>
-                                    <p><?php Common::checkEmptyStr($item["description"]) ?></p>
-                                    <div class="price">
-                                        <span class="<?php echo Common::checkEmptyBoolean($item["new_price"])? "old-price": "primary-price" ?>">
-                                            <?php Common::checkEmptyStr(number_format($item["price"])); ?>
-                                            <span>₫</span>
-                                        </span>
-                                        <?php if(Common::checkEmptyBoolean($item["new_price"])) { ?>
-                                            <span class="primary-price">
-                                                <?php Common::checkEmptyStr(number_format($item["new_price"])); ?>
-                                                <span>₫</span> 
-                                            </span>
-                                        <?php } ?>
                                     </div>
-                                    <div class="btn-control mt-3">
-                                        <span><a href="" class="btn-buy-now btn btn-primary">Mua ngay</a></span>
-                                        <span><a href="" class="btn-add-to-cart btn btn-warning">Thêm vào giỏ hàng</a></span>
+                                    <div class="clothes-item-body">
+                                        <h3>
+                                            <a href="<?php Common::checkEmptyStr($permalink); ?>">
+                                                <?php Common::checkEmptyStr($item["name"]); ?>
+                                            </a>
+                                        </h3>
+                                        <p><?php Common::checkEmptyStr($item["description"]) ?></p>
+                                        <div class="price">
+                                            <span class="<?php echo Common::checkEmptyBoolean($item["new_price"])? "old-price": "primary-price" ?>">
+                                                <?php Common::checkEmptyStr(number_format($item["price"])); ?>
+                                                <span>₫</span>
+                                            </span>
+                                            <?php if(Common::checkEmptyBoolean($item["new_price"])) { ?>
+                                                <span class="primary-price">
+                                                    <?php Common::checkEmptyStr(number_format($item["new_price"])); ?>
+                                                    <span>₫</span> 
+                                                </span>
+                                            <?php } ?>
+                                        </div>
+                                        <div class="btn-control mt-3">
+                                            <span><a href="" class="btn-buy-now btn btn-primary">Mua ngay</a></span>
+                                            <span><a href="" class="btn-add-to-cart btn btn-warning">Thêm vào giỏ hàng</a></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <?php } ?>
                         </div>
-                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -361,6 +364,6 @@
 </section>
 
 <?php 
-    include_once("./views/shared/v_footer.php");
+    include_once("./mvc/views/shared/v_footer.php");
 
 ?>

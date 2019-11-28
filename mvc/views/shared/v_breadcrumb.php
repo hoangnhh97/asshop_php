@@ -1,8 +1,8 @@
 <?php 
-    $product_name = Common::getGET("title");
-    $product_id = Common::getGET("id");
-    $permalink = "/chi-tiet/".Common::generateSlug($product_name)."/".$product_id."";
-    $result = SanPhamController::show_Breadcrumb($product_id);
+    
+    
+    $result = $data["singleProduct"];
+    $permalink = "/chi-tiet/".Common::generateSlug($result["name"])."/".$result["product_id"]."";
 ?>
 <section id="breadcrumb">
     <div class="container">

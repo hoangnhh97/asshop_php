@@ -96,10 +96,10 @@
         </div>
         <div class="row">
             <?php 
-                $cate = SanPhamController::show_Current_CategoryId(Common::getGET("id"));
-                $data = HomeController::show_Product_By_Cate($cate["category_id"]);
+                $data = $data["relatedProduct"];
                 foreach($data as $item) {
                     $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+
             ?>
             <div class="clothes-item col-md-4 p-3">
                 <div class="clothes-item-inner">
@@ -110,7 +110,7 @@
                     </div>
                     <div class="clothes-item-body">
                         <h3>
-                            <a href="<?php Common::checkEmptyStr($permalink); ?>">
+                            <a href="<?php echo $permalink; ?>">
                                 <?php Common::checkEmptyStr($item["name"]); ?>
                             </a>
                         </h3>

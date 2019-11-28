@@ -1,6 +1,4 @@
-<?php 
-    include_once("configs/DBConnection.php");
-?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -95,5 +93,5 @@
             </div>
         </div>
             
-        <?php include_once("views/shared/v_navbar.php") ?>
+        <?php include_once("mvc/views/shared/v_navbar.php") ?>
         <div id="wrapper">
