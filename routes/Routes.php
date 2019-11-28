@@ -14,5 +14,10 @@
         SanPhamController::CreateView("v_san_pham");
     });
 
+    Route::set('dang-nhap', function() {
+        UserController::CreateView("v_dang_nhap");
+        
+    });
+
 
 ?>

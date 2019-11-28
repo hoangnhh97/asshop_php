@@ -34,6 +34,8 @@ $(document).ready(function() {
         items: 1
     });
 
-
+    setTimeout(function() {
+        $('#alert-box').fadeOut();
+    },3000);
     
 });

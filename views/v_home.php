@@ -74,7 +74,7 @@
                             <?php 
                                 $data = HomeController::show_Hot_Deal(0);
                                 foreach($data as $item) {
-                                    $permalink = "/chi-tiet/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+                                    $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
                             ?>
                             <div class="item">
                                 <div class="row">
@@ -133,7 +133,7 @@
                         <?php 
                                 $data = HomeController::show_Hot_Deal(1);
                                 foreach($data as $item) {
-                                    $permalink = "/chi-tiet/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+                                    $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
                             ?>
                             <div class="item">
                                 <div class="row">
@@ -219,7 +219,7 @@
                             <?php 
                                 $data = HomeController::showAllProductLastest();
                                 foreach($data as $item) {
-                                    $permalink = "/chi-tiet/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+                                    $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
                             ?>
                             <div class="clothes-item col-md-4">
                                 <div class="clothes-item-inner">
@@ -262,7 +262,7 @@
                         <?php 
                             $data = HomeController::show_Product_By_Cate(2);
                             foreach($data as $item) {
-                                $permalink = "/chi-tiet/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+                                $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
                         ?>
                         <div class="clothes-item col-md-4">
                             <div class="clothes-item-inner">
@@ -303,7 +303,7 @@
                         <?php 
                             $data = HomeController::show_Product_By_Cate(3);
                             foreach($data as $item) {
-                                $permalink = "/chi-tiet/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+                                $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
                         ?>
                         <div class="clothes-item col-md-4">
                             <div class="clothes-item-inner">

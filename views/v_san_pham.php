@@ -99,7 +99,7 @@
                 $cate = SanPhamController::show_Current_CategoryId(Common::getGET("id"));
                 $data = HomeController::show_Product_By_Cate($cate["category_id"]);
                 foreach($data as $item) {
-                    $permalink = "/chi-tiet/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+                    $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
             ?>
             <div class="clothes-item col-md-4 p-3">
                 <div class="clothes-item-inner">

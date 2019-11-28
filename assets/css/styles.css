@@ -502,3 +502,15 @@ a.btn-add-to-cart.btn.btn-warning {
 .btn-control span a {
     font-size: 12px;
 }
+
+/*
+    @Alert
+*/
+
+div#alert-box {
+    position: fixed;
+    right: 10px;
+    top: 140px;
+    z-index: 99999;
+    border-radius: 0;
+}

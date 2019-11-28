@@ -16,6 +16,64 @@
 
     </head>
     <body>
+
+    <?php 
+        if(isset($_GET["message"])) {
+            echo '<div id="alert-box" class="alert '.$_GET["type"].' alert-dismissable" id="flash-msg">
+                    <h4>'.$_GET["message"].'</h4></div>';   
+        }
+    ?>
+
+
+    <div class="modal fade" id="form-user" tabindex="-1" role="dialog" aria-labelledby="form-user" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-login-tab" data-toggle="tab" href="#nav-login" role="tab" aria-controls="nav-home" aria-selected="true">Đăng nhập</a>
+                        <a class="nav-item nav-link" id="nav-register-tab" data-toggle="tab" href="#nav-register" role="tab" aria-controls="nav-profile" aria-selected="false">Đăng ký</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
+                        <div class="container">
+                            <form action="dang-nhap" class="mt-3" method="post">
+                                <div class="form-group">
+                                    <input type="text" name="txtUsername" placeholder="Tên tài khoản" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="txtPassword" placeholder="Mật khẩu" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" name="btnLogin" class="btn btn-primary">Đăng nhập</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
+                        <div class="container">
+                            <form action="dangky.php" class="mt-3" method="post">
+                                <div class="form-group">
+                                    <input type="text" name="txtUsername" placeholder="Tên tài khoản" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="txtPassword" placeholder="Mật khẩu" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="txtRePass" placeholder="Nhập lại mật khẩu" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" name="btnRegister" class="btn btn-warning">Đăng ký</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
         <div id="top-bar">
             <div class="container">
                 <div class="row">
@@ -30,60 +88,12 @@
                             <li><a href=""><i class="fa fa-map-marked"></i> Địa chỉ</a></li>
                             <li><a href=""><i class="fas fa-truck"></i> Theo dõi đơn hàng</a></li>
                             <li><a href=""><i class="fa fa-shopping-bag"></i> Cửa hàng</a></li>
-                            <li><a href=""><i class="fa fa-user"></i> Đăng nhập/Đăng ký</a></li>
+                            <li><a href="javascript:;" data-toggle="modal" data-target="#form-user"><i class="fa fa-user"></i> Đăng nhập/Đăng ký</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
             
-        <nav class="navbar navbar-expand-lg navbar-dark bg-light sticky-top">
-            <div class="container">
-                <a class="navbar-brand text-warning logo" href="#">ASSHOP</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <form id="search-bar" class="form-inline my-2 my-lg-0">
-                    <select id="ddlCategories" class="form-control">
-                        <option value="">--Chọn danh mục--</option>
-                    </select>
-                    <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm..." aria-label="Search">
-                    <button class="btn-search my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-                </form>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Giới thiệu</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Sản phẩm
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Tin tức</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Liên hệ</a>
-                        </li>
-                    </ul>
-                    
-                    <div class="navbar-right" id="shop-cart">
-                        <ul>
-                            <li><a href=""><i class="fa fa-heart"></i></a></li>
-                            <li class="cart"><a href=""><i class="fa fa-shopping-cart"></i><span class="count-item">0</span></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
+        <?php include_once("views/shared/v_navbar.php") ?>
         <div id="wrapper">

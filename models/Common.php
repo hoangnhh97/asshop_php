@@ -13,6 +13,13 @@
             return $_GET[$name];
         }
 
+        public static function getPOST($name) {
+
+            isset($_POST[$name])?$_POST[$name]:null;
+
+            return $_POST[$name];
+        }
+
         public static function checkEmptyStr($data) {
             if(empty($data) || $data == null)
                 echo "";
