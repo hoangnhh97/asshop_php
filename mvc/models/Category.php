@@ -26,6 +26,25 @@
         }
 
 
+        public function getAllCategoryByProductId($product_id) {
+            try {
+                $con = $this->GetDB();
+                $query = "SELECT * FROM product_with_cate pwc, category c 
+                        WHERE pwc.category_id = c.category_id
+                         AND product_id=:product_id";
+                $stmt = $con->prepare($query);
+                $stmt->bindParam(":product_id", $product_id);
+                $stmt->execute();
+
+                $result = $stmt->fetchAll();
+                $con = null;
+                return $result;
+            } catch(PDOException $e) {
+                return array();
+            }
+        }
+
+
     }
 
 

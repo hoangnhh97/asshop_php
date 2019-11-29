@@ -16,9 +16,8 @@
     <body>
 
     <?php 
-        if(isset($_GET["message"])) {
-            echo '<div id="alert-box" class="alert '.$_GET["type"].' alert-dismissable" id="flash-msg">
-                    <h4>'.$_GET["message"].'</h4></div>';   
+        if(isset($_POST["messageAlert"])) {
+            echo Common::getPOST("messageAlert");
         }
     ?>
 
@@ -35,7 +34,7 @@
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
                         <div class="container">
-                            <form action="dang-nhap" class="mt-3" method="post">
+                            <form action="" class="mt-3" method="post">
                                 <div class="form-group">
                                     <input type="text" name="txtUsername" placeholder="Tên tài khoản" class="form-control"/>
                                 </div>
@@ -86,7 +85,11 @@
                             <li><a href=""><i class="fa fa-map-marked"></i> Địa chỉ</a></li>
                             <li><a href=""><i class="fas fa-truck"></i> Theo dõi đơn hàng</a></li>
                             <li><a href=""><i class="fa fa-shopping-bag"></i> Cửa hàng</a></li>
-                            <li><a href="javascript:;" data-toggle="modal" data-target="#form-user"><i class="fa fa-user"></i> Đăng nhập/Đăng ký</a></li>
+                            <?php if(empty($_SESSION["email"])) { ?>
+                                <li><a href="javascript:;" data-toggle="modal" data-target="#form-user"><i class="fa fa-user"></i> Đăng nhập/Đăng ký</a></li>
+                            <?php }  else { ?>
+                                <li><a href="javascript:;" data-toggle="modal" data-target="#form-user"><i class="fa fa-user"></i> Tài khoản</a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>

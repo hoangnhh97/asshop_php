@@ -1,8 +1,8 @@
 <?php
 class DBConnection{
     //ket noi void db
-    protected $con = NULL;
-    protected $coni = NULL;
+    private $con = NULL;
+    private $coni = NULL;
     public function __construct(){}
     public function getDB(){
         if (!isset($this->con)){

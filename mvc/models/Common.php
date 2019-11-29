@@ -38,6 +38,7 @@
             return true;
         }
 
+
         public static function generateSlug($str)
         {
             $charMap = array(
@@ -64,5 +65,24 @@
             }
             return str_replace(" ", "-", strtolower($str));
         }
+
+
+        public static function template_directory() {
+        
+            if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') 
+                $link = "https"; 
+            else
+                $link = "http"; 
+
+            $link .= "://"; 
+
+            $link .= $_SERVER['HTTP_HOST']; 
+
+            $link .= rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); 
+        
+            
+            return $link; 
+        }
+
     }
 ?>

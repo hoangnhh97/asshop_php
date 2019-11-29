@@ -12,6 +12,7 @@
             if(file_exists("./mvc/controllers/".$arr[0]."Controller.php")) {
                 $this->controller = $arr[0];
                 unset($arr[0]);
+                
             }
             require_once("./mvc/controllers/".$this->controller."Controller.php");
             $resultController = $this->controller."Controller";
@@ -31,6 +32,7 @@
             
             call_user_func_array([$this->controller, $this->action], $this->params);
 
+            
 
         }
 

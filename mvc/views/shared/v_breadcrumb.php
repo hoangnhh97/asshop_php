@@ -2,7 +2,7 @@
     
     
     $result = $data["singleProduct"];
-    $permalink = "/chi-tiet/".Common::generateSlug($result["name"])."/".$result["product_id"]."";
+    $permalink = Common::template_directory()."/SanPham/".Common::generateSlug($result["name"])."/".$result["product_id"]."";
 ?>
 <section id="breadcrumb">
     <div class="container">

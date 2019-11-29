@@ -7,7 +7,7 @@
     <div class="owl-carousel owl-theme">
         <div class="item">
             <div class="item-banner">
-                <img src="http://localhost:8888/asshop/assets/images/banner-1.jpg"/>
+                <img src="<?php echo Common::template_directory(); ?>/assets/images/banner-1.jpg"/>
             </div>
             <div class="item-text">
                 <h3>Arrival Offer Available <br/> <span>Upto 40% Flat</span></h3>
@@ -16,7 +16,7 @@
         </div>
         <div class="item">
             <div class="item-banner">
-                <img src="./assets/images/banner-2.jpg"/>
+                <img src="<?php echo Common::template_directory(); ?>/assets/images/banner-2.jpg"/>
             </div>
             <div class="item-text">
                 <h3>Arrival Offer Available <br/> <span>Upto 40% Flat</span></h3>
@@ -35,12 +35,12 @@
         <div class="owl-carousel owl-theme">
             <div class="item">
                 <div class="cate-img">
-                    <a href=""><img src="./assets/images/cat-balo.jpg" /></a>
+                    <a href=""><img src="<?php echo Common::template_directory(); ?>/assets/images/cat-balo.jpg" /></a>
                 </div>
             </div>
             <div class="item">
                 <div class="cate-img">
-                    <a href=""><img src="./assets/images/cat-giay.jpg" /></a>
+                    <a href=""><img src="<?php echo Common::template_directory(); ?>/assets/images/cat-giay.jpg" /></a>
                 </div>
             </div>
         </div>
@@ -74,12 +74,12 @@
                             <?php 
                                 
                                 while($item = mysqli_fetch_array($data["hotdeal1"])) {
-                                    $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+                                    $permalink = Common::template_directory()."/SanPham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
                             ?>
                             <div class="item">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <img src="./assets/images/products/<?php Common::checkEmptyStr($item["image"]); ?>" />
+                                        <img src="<?php echo Common::template_directory(); ?>/assets/images/products/<?php Common::checkEmptyStr($item["image"]); ?>" />
                                     </div>
                                     <div class="col-md-8">
                                         <div class="item-head">
@@ -133,12 +133,12 @@
                         <?php 
                                 
                                 while($item = mysqli_fetch_array($data["hotdeal2"])) {
-                                    $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+                                    $permalink = Common::template_directory()."/SanPham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
                             ?>
                             <div class="item">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <img src="./assets/images/products/<?php Common::checkEmptyStr($item["image"]); ?>" />
+                                        <img src="<?php echo Common::template_directory(); ?>/assets/images/products/<?php Common::checkEmptyStr($item["image"]); ?>" />
                                     </div>
                                     <div class="col-md-8">
                                         <div class="item-head">
@@ -211,20 +211,20 @@
        <div class="clothes-content">
             <div class="row">
                 <div class="col-md-3">
-                    <img src="./assets/images/cat-left-banner01.png" width="100%"/>
+                    <img src="<?php echo Common::template_directory(); ?>/assets/images/cat-left-banner01.png" width="100%"/>
                 </div>
                 <div class="tab-content col-md-9 pt-3 pb-3" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-clothes1-default" role="tabpanel" aria-labelledby="pills-clothes1-default-tab">
                         <div class="row">
                             <?php 
                                 while($item = mysqli_fetch_array($data["product1"])) {
-                                    $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+                                    $permalink = Common::template_directory()."/SanPham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
                             ?>
                             <div class="clothes-item col-md-4">
                                 <div class="clothes-item-inner">
                                     <div class="clothes-item-head">
                                         <a href="<?php Common::checkEmptyStr($permalink); ?>">
-                                            <img src="./assets/images/products/<?php echo $item["image"]; ?>"/>
+                                            <img src="<?php echo Common::template_directory(); ?>/assets/images/products/<?php echo $item["image"]; ?>"/>
                                         </a>
                                     </div>
                                     <div class="clothes-item-body">
@@ -262,13 +262,13 @@
                             <?php 
                                 $row = $data["productAoSoMi"];
                                 foreach($row as $item) {
-                                    $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+                                    $permalink = Common::template_directory()."/SanPham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
                             ?>
                             <div class="clothes-item col-md-4">
                                 <div class="clothes-item-inner">
                                     <div class="clothes-item-head">
                                         <a href="<?php Common::checkEmptyStr($permalink); ?>">
-                                            <img src="./assets/images/products/<?php echo $item["image"]; ?>"/>
+                                            <img src="<?php echo Common::template_directory(); ?>/assets/images/products/<?php echo $item["image"]; ?>"/>
                                         </a>
                                     </div>
                                     <div class="clothes-item-body">
@@ -305,13 +305,13 @@
                             <?php 
                                 $row = $data["productAoThun"];
                                 foreach($row as $item) {
-                                    $permalink = "san-pham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+                                    $permalink = Common::template_directory()."/SanPham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
                             ?>
                             <div class="clothes-item col-md-4">
                                 <div class="clothes-item-inner">
                                     <div class="clothes-item-head">
                                         <a href="<?php Common::checkEmptyStr($permalink); ?>">
-                                            <img src="./assets/images/products/<?php echo $item["image"]; ?>"/>
+                                            <img src="<?php echo Common::template_directory(); ?>/assets/images/products/<?php echo $item["image"]; ?>"/>
                                         </a>
                                     </div>
                                     <div class="clothes-item-body">
@@ -354,10 +354,10 @@
 <section id="partner-logo" class="pt-5 pb-5">
     <div class="container">
         <div class="owl-carousel owl-theme">
-            <div class="item"><img src="./assets/images/partners/brand1.jpg"/></div>
-            <div class="item"><img src="./assets/images/partners/brand2.jpg"/></div>
-            <div class="item"><img src="./assets/images/partners/brand3.jpg"/></div>
-            <div class="item"><img src="./assets/images/partners/brand4.jpg"/></div>
+            <div class="item"><img src="<?php echo Common::template_directory(); ?>/assets/images/partners/brand1.jpg"/></div>
+            <div class="item"><img src="<?php echo Common::template_directory(); ?>/assets/images/partners/brand2.jpg"/></div>
+            <div class="item"><img src="<?php echo Common::template_directory(); ?>/assets/images/partners/brand3.jpg"/></div>
+            <div class="item"><img src="<?php echo Common::template_directory(); ?>/assets/images/partners/brand4.jpg"/></div>
         </div>
     </div>
 
