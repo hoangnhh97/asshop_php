@@ -157,8 +157,8 @@
                             <?php } ?>
                         </div>
                         <div class="btn-control mt-3">
-                            <span><a href="" class="btn-buy-now btn btn-primary">Mua ngay</a></span>
-                            <span><a href="" class="btn-add-to-cart btn btn-warning">Thêm vào giỏ hàng</a></span>
+                            <span><a href="<?php echo Common::template_directory(); ?>/GioHang" class="btn-buy-now btn btn-primary" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>">Mua ngay</a></span>
+                            <span><a href="javascript:;" class="btn-add-to-cart btn btn-warning" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>">Thêm vào giỏ hàng</a></span>
                         </div>
                     </div>
                 </div>

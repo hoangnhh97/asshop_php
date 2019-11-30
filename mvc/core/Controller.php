@@ -9,6 +9,7 @@
             if(isset($_POST["btnLogin"])) {
                 $this->Login();
             }
+            $this->model("Category");
             require_once "./mvc/views/".$view.".php";
         }
 
@@ -23,7 +24,7 @@
 
 
             $_POST["messageAlert"] = '<div id="alert-box" class="alert '.$type.' alert-dismissable" id="flash-msg">
-                    <h4>'.$message.'</h4></div>';   
+                    <p>'.$message.'</p></div>';   
 
 
             return $_POST["messageAlert"];

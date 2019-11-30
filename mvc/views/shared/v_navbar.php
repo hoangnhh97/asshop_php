@@ -5,8 +5,15 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <form id="search-bar" class="form-inline my-2 my-lg-0">
+            <?php 
+                $category = new Category();
+                $result = $category->get_All_Category();
+            ?>
             <select id="ddlCategories" class="form-control">
                 <option value="">--Chọn danh mục--</option>
+                <?php foreach($result as $item) { ?>
+                    <option value="<?php Common::checkEmptyStr($item["category_id"]); ?>"><?php Common::checkEmptyStr($item["cate_name"]) ?></option>
+                <?php } ?>
             </select>
             <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm..." aria-label="Search">
             <button class="btn-search my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
@@ -19,17 +26,41 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Giới thiệu</a>
                 </li>
+                <!-- Level one dropdown -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Sản phẩm
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
+                <a id="dropdownMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Sản phẩm</a>
+                    <ul aria-labelledby="dropdownMenu1" class="dropdown-menu border-0 shadow">
+                        <li><a href="#" class="dropdown-item">Some action </a></li>
+                        <li><a href="#" class="dropdown-item">Some other action</a></li>
+
+                        <li class="dropdown-divider"></li>
+
+                        <!-- Level two dropdown-->
+                        <li class="dropdown-submenu">
+                        <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Hover for action</a>
+                        <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
+                            <li>
+                            <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
+                            </li>
+
+                            <!-- Level three dropdown-->
+                            <li class="dropdown-submenu">
+                            <a id="dropdownMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">level 2</a>
+                            <ul aria-labelledby="dropdownMenu3" class="dropdown-menu border-0 shadow">
+                                <li><a href="#" class="dropdown-item">3rd level</a></li>
+                                <li><a href="#" class="dropdown-item">3rd level</a></li>
+                            </ul>
+                            </li>
+                            <!-- End Level three -->
+
+                            <li><a href="#" class="dropdown-item">level 2</a></li>
+                            <li><a href="#" class="dropdown-item">level 2</a></li>
+                        </ul>
+                        </li>
+                        <!-- End Level two -->
+                    </ul>
                 </li>
+                <!-- End Level one -->
                 <li class="nav-item">
                     <a class="nav-link" href="#">Tin tức</a>
                 </li>

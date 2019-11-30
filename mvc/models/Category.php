@@ -8,6 +8,21 @@
             
         }
 
+        public function get_All_Category() {
+            try {
+                $con = $this->GetDB();
+                $query = "SELECT * FROM category";
+                $stmt = $con->prepare($query);
+                $stmt->execute();
+
+                $result = $stmt->fetchAll();
+                $con = null;
+                return $result;
+            } catch(PDOException $e) {
+                return array();
+            }
+        }
+
 
         public function getCategoryId($product_id) {
             try {

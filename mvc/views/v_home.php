@@ -110,7 +110,7 @@
                                             </div>
                                             <div class="group-button">
                                                 <ul>
-                                                    <li><a href="javascript:;"><i class="fa fa-shopping-cart"></i></a></li>
+                                                    <li><a href="javascript:;" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>"><i class="fa fa-shopping-cart"></i></a></li>
                                                     <li><a href="<?php Common::checkEmptyStr($permalink) ?>"><i class="fa fa-eye"></i></a></li>
                                                     <li><a href="javascript:;"><i class="fa fa-heart"></i></a></li>
                                                 </ul>
@@ -169,7 +169,7 @@
                                             </div>
                                             <div class="group-button">
                                                 <ul>
-                                                    <li><a href="javascript:;"><i class="fa fa-shopping-cart"></i></a></li>
+                                                    <li><a href="javascript:;" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>"><i class="fa fa-shopping-cart"></i></a></li>
                                                     <li><a href="<?php Common::checkEmptyStr($permalink) ?>"><i class="fa fa-eye"></i></a></li>
                                                     <li><a href="javascript:;"><i class="fa fa-heart"></i></a></li>
                                                 </ul>
@@ -247,8 +247,8 @@
                                             <?php } ?>
                                         </div>
                                         <div class="btn-control mt-3">
-                                            <span><a href="" class="btn-buy-now btn btn-primary">Mua ngay</a></span>
-                                            <span><a href="" class="btn-add-to-cart btn btn-warning">Thêm vào giỏ hàng</a></span>
+                                            <span><a href="<?php echo Common::template_directory(); ?>/GioHang" class="btn-buy-now btn btn-primary" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>">Mua ngay</a></span>
+                                            <span><a href="javascript:;" class="btn-add-to-cart btn btn-warning" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>">Thêm vào giỏ hàng</a></span>
                                         </div>
                                         
                                     </div>
@@ -291,8 +291,8 @@
                                             <?php } ?>
                                         </div>
                                         <div class="btn-control mt-3">
-                                            <span><a href="" class="btn-buy-now btn btn-primary">Mua ngay</a></span>
-                                            <span><a href="" class="btn-add-to-cart btn btn-warning">Thêm vào giỏ hàng</a></span>
+                                        <span><a href="<?php echo Common::template_directory(); ?>/GioHang" class="btn-buy-now btn btn-primary" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>">Mua ngay</a></span>
+                                            <span><a href="javascript:;" class="btn-add-to-cart btn btn-warning" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>">Thêm vào giỏ hàng</a></span>
                                         </div>
                                     </div>
                                 </div>
@@ -334,8 +334,8 @@
                                             <?php } ?>
                                         </div>
                                         <div class="btn-control mt-3">
-                                            <span><a href="" class="btn-buy-now btn btn-primary">Mua ngay</a></span>
-                                            <span><a href="" class="btn-add-to-cart btn btn-warning">Thêm vào giỏ hàng</a></span>
+                                        <span><a href="<?php echo Common::template_directory(); ?>/GioHang" class="btn-buy-now btn btn-primary" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>">Mua ngay</a></span>
+                                            <span><a href="javascript:;" class="btn-add-to-cart btn btn-warning" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>">Thêm vào giỏ hàng</a></span>
                                         </div>
                                     </div>
                                 </div>
