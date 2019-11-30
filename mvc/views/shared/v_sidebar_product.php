@@ -1,4 +1,4 @@
-<div class="widget-1">
+<div class="widget widget-1">
     <div class="widget-title">
 
     </div>

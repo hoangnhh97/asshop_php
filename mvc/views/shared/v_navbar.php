@@ -4,18 +4,18 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <form id="search-bar" class="form-inline my-2 my-lg-0">
+        <form action="<?php echo Common::template_directory(); ?>/Search/Index" method="get" id="search-bar" class="form-inline my-2 my-lg-0">
             <?php 
                 $category = new Category();
                 $result = $category->get_All_Category();
             ?>
-            <select id="ddlCategories" class="form-control">
+            <select id="ddlCategories" name="s" class="form-control">
                 <option value="">--Chọn danh mục--</option>
                 <?php foreach($result as $item) { ?>
                     <option value="<?php Common::checkEmptyStr($item["category_id"]); ?>"><?php Common::checkEmptyStr($item["cate_name"]) ?></option>
                 <?php } ?>
             </select>
-            <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm..." aria-label="Search">
+            <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Tìm kiếm..." aria-label="Search">
             <button class="btn-search my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
         </form>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

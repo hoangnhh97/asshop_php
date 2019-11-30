@@ -27,7 +27,12 @@ $(document).ready(function() {
     return false;
   });
 
-
+  $('#search-bar').submit(function (event) { 
+      var keyword = $('#search-bar input[name="keyword"]').val();
+      var cate = $('select#ddlCategories').val();
+      window.location='http://localhost:8888/asshop/Search/Index/'+ keyword + '/' + cate;
+      return false;
+  });
 //Handle Add product to Cart
   $('.add-to-cart').on('click', function(e) {
     e.preventDefault();

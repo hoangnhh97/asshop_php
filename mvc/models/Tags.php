@@ -8,6 +8,21 @@
             
         }
 
+        public function get_All_Tags() {
+            try {
+                $con = $this->GetDB();
+                $query = "SELECT * FROM tags";
+                $stmt = $con->prepare($query);
+                $stmt->execute();
+
+                $result = $stmt->fetchAll();
+                $con = null;
+                return $result;
+            } catch(PDOException $e) {
+                return array();
+            }
+        }
+
 
 
         public function getAllTagByProductId($product_id) {
