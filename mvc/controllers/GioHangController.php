@@ -10,21 +10,43 @@
         public function AddToCart() {
             $cookiename = "_product_in_cart";
             $pid = Common::getPOST("id");
+            $pname = Common::getPOST("name");
+            $pprice = Common::getPOST("price");
+            $pquantity = 1;
+            if(isset($_POST["quantity"])) {
+                $pquantity = $_POST["quantity"];
+            }
+
             $cart = array();
             
-            if(!empty($_COOKIE[$cookiename])) {
-                $cart = json_decode($_COOKIE[$cookiename], true);
+            if(isset($_COOKIE[$cookiename])) {
+                $cookie_data = stripslashes($_COOKIE[$cookiename]);
+                $cart = json_decode($cookie_data, true);
                 
             }
 
-            array_push($cart, $pid);
+            $item_id_list = array_column($cart, 'item_id');
 
+            if(in_array($pid, $item_id_list)) {
+                foreach($cart as $keys => $value) {
+                    if($cart[$keys]["item_id"] == $pid) {
+                        $cart[$keys]["item_quantity"] += $pquantity;
+                    }
+                }
+            } else {
+                $item_array = array(
+                    'item_id'   => $pid,
+                    'item_name'   => $pname,
+                    'item_price'  => $pprice,
+                    'item_quantity'  => $pquantity
+                   );
+                $cart[] = $item_array;
+            }
             
-            setcookie($cookiename, json_encode($cart), time() + 3600, "/");
-            $_COOKIE[$cookiename] = json_encode($cart);
-            $arr = json_decode($_COOKIE[$cookiename], true);
+            $item_data = json_encode($cart, JSON_UNESCAPED_UNICODE);
+            setcookie($cookiename, $item_data, time() + 3600, "/");
 
-            echo count(array_count_values($arr));
+            echo count($cart);
         }
 
         public function AddedProducts() {
@@ -35,13 +57,11 @@
                 $cart = json_decode($_COOKIE[$cookiename], true);
             }
             $arr = "";
-            for($i = 0; $i < count(array_count_values($cart)); $i++) {
-                $arr .= $cart[$i].',';
-                
+            foreach($cart as $keys => $value) {
+                $arr .= $cart[$keys]["item_id"] . ",";
             }
 
-
-            echo $arr; 
+            echo $arr;
         }
 
         public function CountProductInCart() {
@@ -54,7 +74,44 @@
             }
 
 
-            echo count(array_count_values($cart));
+            echo count($cart);
+        }
+
+
+        public function Delete($id) {
+            
+            $cookie_data = stripslashes($_COOKIE['_product_in_cart']);
+            $cart_data = json_decode($cookie_data, true);
+            foreach($cart_data as $keys => $values)
+            {
+                if($cart_data[$keys]['item_id'] == $id)
+                {
+                    unset($cart_data[$keys]);
+                    $item_data = json_encode($cart_data, JSON_UNESCAPED_UNICODE);
+                    setcookie("_product_in_cart", $item_data, time() + 3600, "/");
+                    header("location:".Common::template_directory()."/GioHang");
+                }
+            }
+            
+        }
+
+        public function Update() {
+            $id = Common::getPOST("txtItemId");
+            $quantity = Common::getPOST("txtItemQuantity");
+
+            $cookie_data = stripslashes($_COOKIE['_product_in_cart']);
+            $cart_data = json_decode($cookie_data, true);
+            foreach($cart_data as $keys => $values)
+            {
+                if($cart_data[$keys]['item_id'] == $id)
+                {
+                    $cart_data[$keys]['item_quantity'] = $quantity;
+                    $item_data = json_encode($cart_data, JSON_UNESCAPED_UNICODE);
+                    setcookie("_product_in_cart", $item_data, time() + 3600, "/");
+                    header("location:".Common::template_directory()."/GioHang");
+                }
+            }
+            
         }
     }
 

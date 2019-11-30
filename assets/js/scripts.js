@@ -2,19 +2,72 @@ $(document).ready(function() {
   CountItemInCart();
   CheckAddedProducts();
 
-  //Handle Add product to Cart
-  $('.btn-add-to-cart').on('click', function(e) {
+  //Handle Add product to Cart in Single Product page
+  $('._btn-add-to-cart').on('click', function(e) {
     e.preventDefault();
     var $product_id = $(this).attr('data-id');
-    var $postData = {'id': $product_id};
+    var $product_name = $(this).parent().parent().parent().parent().parent().find('.product-info-head h3').text().trim();
+    var $price = $(this).parent().parent().parent().parent().parent().find('._price').text().replace(" ₫", "").replace(",", "").trim();
+    var $quantity = $('._btn-add-to-cart').parent().parent().find('.quantity input').val();
+    var $postData = {'id': $product_id, 'name': $product_name,'price':$price, 'quantity':$quantity};
     $.ajax({
       method: 'post',
-      url:'GioHang/AddToCart',
+      url:'http://localhost:8888/asshop/GioHang/AddToCart',
       dataType: 'html',
       data: $postData,
       success: function($response) {
         $('.count-item').text($response);
-        
+      },
+      error: function (xhr, ajaxOptions, thrownError){
+        alert(xhr.status);
+        alert(thrownError);
+      }
+    });
+
+    return false;
+  });
+
+
+//Handle Add product to Cart
+  $('.add-to-cart').on('click', function(e) {
+    e.preventDefault();
+    var $product_id = $(this).attr('data-id');
+    var $product_name = $(this).parent().parent().parent().parent().parent().find('h1').text().trim();
+    var $price = $(this).parent().parent().parent().parent().parent().find('.primary-price').text().replace("₫", "").replace(",", "").trim();
+    console.log($price);
+    var $quantity = 1;
+    var $postData = {'id': $product_id, 'name': $product_name,'price':$price, 'quantity':$quantity};
+    $.ajax({
+      method: 'post',
+      url:'http://localhost:8888/asshop/GioHang/AddToCart',
+      dataType: 'html',
+      data: $postData,
+      success: function($response) {
+        $('.count-item').text($response);
+      },
+      error: function (xhr, ajaxOptions, thrownError){
+        alert(xhr.status);
+        alert(thrownError);
+      }
+    });
+
+    return false;
+  });
+
+  $('.btn-add-to-cart, .btn-buy-now').on('click', function(e) {
+    e.preventDefault();
+    var $product_id = $(this).attr('data-id');
+    var $product_name = $(this).parent().parent().parent().find('h3').text().trim();
+    var $price = $(this).parent().parent().parent().find('.primary-price').text().replace("₫", "").replace(",", "").trim();
+    var $quantity = 1;
+    var $postData = {'id': $product_id, 'name': $product_name,'price':$price, 'quantity':$quantity};
+    $.ajax({
+      method: 'post',
+      url:'http://localhost:8888/asshop/GioHang/AddToCart',
+      dataType: 'html',
+      data: $postData,
+      success: function($response) {
+        $('.count-item').text($response);
       },
       error: function (xhr, ajaxOptions, thrownError){
         alert(xhr.status);
@@ -29,12 +82,15 @@ $(document).ready(function() {
   function CheckAddedProducts() {
     $.ajax({
       method: 'post',
-      url:'GioHang/AddedProducts',
+      url:'http://localhost:8888/asshop/GioHang/AddedProducts',
       dataType: 'html',
       success: function($response) {
         $result = $response.split(',');
-        console.log($result.length - 1);
         for(var i = 0; i < $result.length -1; i++) {
+          console.log('add-to-cart[data-id='+ $result[i] +']');
+          $('.btn-add-to-cart[data-id='+ $result[i] +'], ._btn-add-to-cart[data-id='+ $result[i] +']').attr("href", "javascript:;");
+          // $('.btn-add-to-cart[data-id='+ $result[i] +'], ._btn-add-to-cart[data-id='+ $result[i] +']').attr("class", "btn-add-to-cart btn btn-secondary");
+          // $('.btn-add-to-cart[data-id='+ $result[i] +'], ._btn-add-to-cart[data-id='+ $result[i] +']').text("Đã thêm vào giỏ hàng");
           
         }
         
@@ -49,7 +105,7 @@ $(document).ready(function() {
   function CountItemInCart() {
     $.ajax({
       method: 'post',
-      url:'GioHang/CountProductInCart',
+      url:'http://localhost:8888/asshop/GioHang/CountProductInCart',
       dataType: 'html',
       success: function($response) {
         $('.count-item').text($response);

@@ -110,7 +110,7 @@
                                             </div>
                                             <div class="group-button">
                                                 <ul>
-                                                    <li><a href="javascript:;" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                                    <li><a href="javascript:;" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>" class="add-to-cart"><i class="fa fa-shopping-cart"></i></a></li>
                                                     <li><a href="<?php Common::checkEmptyStr($permalink) ?>"><i class="fa fa-eye"></i></a></li>
                                                     <li><a href="javascript:;"><i class="fa fa-heart"></i></a></li>
                                                 </ul>
@@ -169,7 +169,7 @@
                                             </div>
                                             <div class="group-button">
                                                 <ul>
-                                                    <li><a href="javascript:;" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                                    <li><a href="javascript:;" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>" class="add-to-cart"><i class="fa fa-shopping-cart"></i></a></li>
                                                     <li><a href="<?php Common::checkEmptyStr($permalink) ?>"><i class="fa fa-eye"></i></a></li>
                                                     <li><a href="javascript:;"><i class="fa fa-heart"></i></a></li>
                                                 </ul>

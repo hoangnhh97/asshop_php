@@ -18,18 +18,18 @@
                                 <h3><?php Common::checkEmptyStr($result["name"]); ?></h3>
                                 <div class="product-price mb-3">
                                     <span class="<?php echo Common::checkEmptyBoolean($result["new_price"])?"old_price":"_price" ?>">
-                                        <?php Common::checkEmptyStr($result["price"]) ?>
+                                        <?php Common::checkEmptyStr(number_format($result["price"])) ?>
                                         <span>₫</span>
                                     </span>
                                     <?php if(Common::checkEmptyBoolean($result["new_price"])) { ?>
                                         <span class="_price">
-                                            <?php Common::checkEmptyStr($result["new_price"]); ?>
+                                            <?php Common::checkEmptyStr(number_format($result["new_price"])); ?>
                                             <span>₫</span>
                                         </span>
                                     <?php } ?>
                                 </div>
                                 <div class="product-desc">
-                                    <p><?php Common::checkEmptyStr($result["description"]); ?></p>
+                                    <p><?php Common::checkEmptyStr($result["short_desc"]); ?></p>
                                 </div>
                             </div>
                             <div class="product-info-body">
@@ -39,7 +39,11 @@
                                             <input type="number" min="1" max="50" step="1" value="1">
                                         </div>
                                         
-                                        <span class="ml-3"><a href="" class="btn btn-primary"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</a></span>
+                                        <span class="ml-3">
+                                            <a href="javascript:;" class="_btn-add-to-cart btn btn-primary" data-id="<?php Common::checkEmptyStr($result["product_id"]); ?>">
+                                                <i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng
+                                            </a>
+                                        </span>
                                     </div>
                                     <div class="add-to-farvorite mt-4 mb-3">
                                         <ul>
@@ -101,8 +105,10 @@
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
-                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+                        <div class="tab-pane fade show active p-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <p><?php Common::checkEmptyStr($result["description"]); ?></p>
+                        </div>
+                        <div class="tab-pane fade p-3" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
                     </div>
                 </div>
             </div>
