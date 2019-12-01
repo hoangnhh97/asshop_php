@@ -20,7 +20,7 @@
         <h3>Lọc theo giá</h3>
     </div>
     <div class="widget-content">
-        <form action="<?php echo Comm::template_directory(); ?>/Filter" method="get">
+        <form action="<?php echo Comm::template_directory(); ?>/Filter/Index" method="get">
             <div class="form-group">
                 <label for="txtPriceFrom">Từ:</label>
                 <input type="number" class="form-control" id="txtPriceFrom" name="txtPriceFrom" value="0" min="0" class="form-control" />
