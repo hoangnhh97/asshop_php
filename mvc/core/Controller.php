@@ -6,8 +6,14 @@
         }
 
         public function view($view, $data=[]) {
+            $this->model("Users");
             if(isset($_POST["btnLogin"])) {
                 $this->Login();
+            }
+
+
+            if(isset($_POST["btnRegister"])) {
+                $this->Register();
             }
             $this->model("Category");
             require_once "./mvc/views/".$view.".php";
@@ -51,6 +57,40 @@
             
             
         }
+
+
+        public function Register() {
+            $first_name = Common::getPOST("txtTen");
+            $last_name = Common::getPOST("txtHo");
+
+            $email = Common::getPOST("txtUsername");
+            $phone = Common::getPOST("txtPhoneNumber");
+            $pass = Common::getPOST("txtPassword");
+            $repass = Common::getPOST("txtRePass");
+            if(empty($first_name) || empty($last_name) || empty($email) || empty($pass) || empty($phone)) {
+                $this->setAlert("Đăng ký thất bại. Vui lòng nhập đầy đủ thông tin!", "error");
+            }
+
+            if($pass != $repass) {
+                $this->setAlert("Đăng ký thất bại. Mật khẩu không trùng khớp!", "error");
+            }
+    
+            $user = new Users();
+            $address = "";
+            $type = "1";
+            $roleid = "2";
+            $createUser = $user->insert_User($first_name, $last_name, $email, $pass, $phone, $address, $type, $roleid);
+            var_dump($createUser);
+            if($createUser) {
+                $this->setAlert("Đăng ký thành công!", "success");
+            } else {
+                $this->setAlert("Đăng ký thất bại. Vui lòng kiểm tra lại thông tin!", "error");
+            }
+            
+        }
+
+
+        
 
         
     }

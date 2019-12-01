@@ -13,7 +13,7 @@
                 <?php 
                     $result = $data["singleTag"];
                 ?>
-                <h3><strong>Danh mục:</strong> <?php echo $result["tag_name"]; ?></h3>
+                <h3><strong>Thẻ:</strong> <?php echo $result["tag_name"]; ?></h3>
                 <hr>
                 <div class="row">
                     <?php 

@@ -22,7 +22,7 @@
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <a class="dropdown-item" href="#">Thông tin</a>
                                 <a class="dropdown-item" href="#">Cài đặt</a>
-                                <a class="dropdown-item" href="#">Đăng xuất</a>
+                                <a class="dropdown-item" href="<?php echo Common::template_directory(); ?>/User/Logout">Đăng xuất</a>
                             </div>
                         </li>
                     <?php } ?>

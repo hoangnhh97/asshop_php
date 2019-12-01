@@ -4,12 +4,13 @@
     <head>
         <meta charset="utf-8"/>
         <title>Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="http://localhost:8888/asshop/assets/css/all.min.css" rel="stylesheet"/>
-        <link href="http://localhost:8888/asshop/assets/css/bootstrap.min.css" rel="stylesheet"/>
-        <link href="http://localhost:8888/asshop/assets/css/owl.carousel.min.css" rel="stylesheet"/>
-        <link href="http://localhost:8888/asshop/assets/css/owl.theme.default.min.css" rel="stylesheet"/>
-        <link href="http://localhost:8888/asshop/assets/css/styles.css" rel="stylesheet"/>
+        <link href="<?php echo Common::template_directory(); ?>/assets/css/all.min.css" rel="stylesheet"/>
+        <link href="<?php echo Common::template_directory(); ?>/assets/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="<?php echo Common::template_directory(); ?>/assets/css/owl.carousel.min.css" rel="stylesheet"/>
+        <link href="<?php echo Common::template_directory(); ?>/assets/css/owl.theme.default.min.css" rel="stylesheet"/>
+        <link href="<?php echo Common::template_directory(); ?>/assets/css/styles.css" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
     </head>
@@ -49,9 +50,20 @@
                     </div>
                     <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
                         <div class="container">
-                            <form action="dangky.php" class="mt-3" method="post">
+                            <form action="" class="mt-3" method="post">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <input type="text" name="txtTen" placeholder="Tên" class="form-control"/>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input type="text" name="txtHo" placeholder="Họ" class="form-control"/>
+                                    </div>
+                                </div>
                                 <div class="form-group">
-                                    <input type="text" name="txtUsername" placeholder="Tên tài khoản" class="form-control"/>
+                                    <input type="text" name="txtUsername" placeholder="Địa chỉ email" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="txtPhoneNumber" placeholder="Số điện thoại" class="form-control"/>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" name="txtPassword" placeholder="Mật khẩu" class="form-control"/>

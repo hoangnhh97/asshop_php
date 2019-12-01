@@ -20,18 +20,18 @@
         <h3>Lọc theo giá</h3>
     </div>
     <div class="widget-content">
-        <form action="<?php echo Comm::template_directory(); ?>/Filter/Index" method="get">
+        <form action="<?php echo Common::template_directory(); ?>/Filter/Index" method="get" id="filter-price-form">
             <div class="form-group">
                 <label for="txtPriceFrom">Từ:</label>
-                <input type="number" class="form-control" id="txtPriceFrom" name="txtPriceFrom" value="0" min="0" class="form-control" />
+                <input type="number" class="form-control" id="txtPriceFrom" name="txtPriceFrom" value="<?php echo !empty($data["pricefrom"])? $data["pricefrom"]:"0"; ?>" min="0" class="form-control" />
                 
             </div>
             <div class="form-group">
                 <label for="txtPriceTo">Đến:</label>
-                <input type="number" class="form-control" name="txtPriceTo" id="txtPriceTo" value="0" min="100000" class="form-control" />
+                <input type="number" class="form-control" name="txtPriceTo" id="txtPriceTo" value="<?php echo !empty($data["priceto"])? $data["priceto"]:"100000"; ?>" min="100000" class="form-control" />
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Lọc</button>
+                <button type="submit" class="btn-filter-price btn btn-primary">Lọc</button>
             </div>
         </form>
     </div>

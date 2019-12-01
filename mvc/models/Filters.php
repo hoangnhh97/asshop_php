@@ -6,6 +6,23 @@
         {
             
         }
+        public function filter_Product_By_Price($price_from, $price_to) {
+            try {
+                $con = $this->GetDB();
+                $query = "SELECT * FROM products 
+                        WHERE price BETWEEN :pricefrom AND :priceto ORDER BY created_at";
+                $stmt = $con->prepare($query);
+                $stmt->bindParam(":pricefrom", $price_from);
+                $stmt->bindParam(":priceto", $price_to);
+                $stmt->execute();
+
+                $result = $stmt->fetchAll();
+                $con = null;
+                return $result;
+            } catch(PDOException $e) {
+                return array();
+            }
+        }
 
 
         public function search_Product_by_Cate($name, $cate_id) {

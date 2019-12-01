@@ -25,12 +25,12 @@
         </footer>
         
         <!--- BEGIN area_js --->
-        <script type="text/javascript" src="http://localhost:8888/asshop/assets/js/jquery.min.js"></script>
-        <script type="text/javascript" src="http://localhost:8888/asshop/assets/js/popper.min.js"></script>
-        <script type="text/javascript" src="http://localhost:8888/asshop/assets/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="http://localhost:8888/asshop/assets/js/all.min.js"></script>
-        <script type="text/javascript" src="http://localhost:8888/asshop/assets/js/owl.carousel.min.js"></script>
-        <script type="text/javascript" src="http://localhost:8888/asshop/assets/js/scripts.js"></script>
+        <script type="text/javascript" src="<?php echo Common::template_directory(); ?>/assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo Common::template_directory(); ?>/assets/js/popper.min.js"></script>
+        <script type="text/javascript" src="<?php echo Common::template_directory(); ?>/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="<?php echo Common::template_directory(); ?>/assets/js/all.min.js"></script>
+        <script type="text/javascript" src="<?php echo Common::template_directory(); ?>/assets/js/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="<?php echo Common::template_directory(); ?>/assets/js/scripts.js"></script>
         <!--- END area_js --->
     </body>
 </html>

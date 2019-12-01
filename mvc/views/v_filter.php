@@ -10,10 +10,7 @@
                 ?>
             </div>
             <div class="content col-md-9">
-                <?php 
-                    $result = $data["singleTag"];
-                ?>
-                <h3><strong>Danh mục:</strong> <?php echo $result["tag_name"]; ?></h3>
+                <h3><strong>Lọc: </strong> Theo giá từ <?php echo $data["pricefrom"]; ?> đến <?php echo $data["priceto"]; ?> </h3>
                 <hr>
                 <div class="row">
                     <?php 

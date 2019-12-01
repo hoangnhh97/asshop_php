@@ -40,6 +40,20 @@ $(document).ready(function() {
       window.location='http://localhost:8888/asshop/Search/Index/'+ keyword + '/' +  cate;
       return false;
   });
+
+
+  $('#filter-price-form').submit(function (event) { 
+    var price_from = $('#txtPriceFrom').val();
+    var price_to = $('#txtPriceTo').val();
+    if(price_from.length == 0) {
+      price_from = "0";
+    } else if(price_to.length == 0) {
+      price_to = "0";
+    }
+    
+    window.location='http://localhost:8888/asshop/Filter/Index/'+ price_from + '/' +  price_to;
+    return false;
+});
 //Handle Add product to Cart
   $('.add-to-cart').on('click', function(e) {
     e.preventDefault();
