@@ -22,6 +22,7 @@
             }
         }
 
+        //Get Limit 4 products
         public function getAllProductByCate($cate_id) {
             try {
                 $con = $this->GetDB();
@@ -57,6 +58,43 @@
         }
 
 
+        public function get_All_Product_By_CateId($cate_id) {
+            try {
+                $con = $this->GetDB();
+                $query = "SELECT DISTINCT * FROM product_with_cate pwc, products p 
+                        WHERE pwc.product_id = p.product_id
+                        AND pwc.category_id =:cateid GROUP BY p.name ORDER BY p.created_at";
+                $stmt = $con->prepare($query);
+                $stmt->bindParam(":cateid", $cate_id);
+                $stmt->execute();
+
+                $result = $stmt->fetchAll();
+                $con = null;
+                return $result;
+            } catch(PDOException $e) {
+                return array();
+            }
+        }
+
+
+
+        public function get_All_Product_By_TagId($tag_id) {
+            try {
+                $con = $this->GetDB();
+                $query = "SELECT DISTINCT * FROM tags t, products p 
+                        WHERE t.product_id = p.product_id
+                        AND t.tag_id=:tagid GROUP BY p.name ORDER BY p.created_at";
+                $stmt = $con->prepare($query);
+                $stmt->bindParam(":tagid", $tag_id);
+                $stmt->execute();
+
+                $result = $stmt->fetchAll();
+                $con = null;
+                return $result;
+            } catch(PDOException $e) {
+                return array();
+            }
+        }
     }
 
 

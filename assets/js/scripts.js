@@ -28,9 +28,16 @@ $(document).ready(function() {
   });
 
   $('#search-bar').submit(function (event) { 
-      var keyword = $('#search-bar input[name="keyword"]').val();
+      var keyword = $('#search-bar input[name="s"]').val();
       var cate = $('select#ddlCategories').val();
-      window.location='http://localhost:8888/asshop/Search/Index/'+ keyword + '/' + cate;
+      console.log(keyword.length);
+      if(keyword.length == 0) {
+        keyword = "null";
+      } else if(cate.length == 0) {
+        cate = "";
+      }
+      
+      window.location='http://localhost:8888/asshop/Search/Index/'+ keyword + '/' +  cate;
       return false;
   });
 //Handle Add product to Cart
@@ -73,6 +80,7 @@ $(document).ready(function() {
       data: $postData,
       success: function($response) {
         $('.count-item').text($response);
+        CheckAddedProducts();
       },
       error: function (xhr, ajaxOptions, thrownError){
         alert(xhr.status);
@@ -92,10 +100,9 @@ $(document).ready(function() {
       success: function($response) {
         $result = $response.split(',');
         for(var i = 0; i < $result.length -1; i++) {
-          console.log('add-to-cart[data-id='+ $result[i] +']');
           $('.btn-add-to-cart[data-id='+ $result[i] +'], ._btn-add-to-cart[data-id='+ $result[i] +']').attr("href", "javascript:;");
-          // $('.btn-add-to-cart[data-id='+ $result[i] +'], ._btn-add-to-cart[data-id='+ $result[i] +']').attr("class", "btn-add-to-cart btn btn-secondary");
-          // $('.btn-add-to-cart[data-id='+ $result[i] +'], ._btn-add-to-cart[data-id='+ $result[i] +']').text("Đã thêm vào giỏ hàng");
+          $('.btn-add-to-cart[data-id='+ $result[i] +']').attr("class", "btn-add-to-cart btn btn-secondary");
+          $('.btn-add-to-cart[data-id='+ $result[i] +']').text("Đã thêm vào giỏ hàng");
           
         }
         

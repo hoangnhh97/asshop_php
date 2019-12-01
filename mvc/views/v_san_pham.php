@@ -47,8 +47,8 @@
                                     </div>
                                     <div class="add-to-farvorite mt-4 mb-3">
                                         <ul>
-                                            <li><a href=""><i class="fa fa-heart"></i> Thêm vào danh sách yêu thích</a></li>
-                                            <li><a href=""><i class="fa fa-chart-line"></i> So sánh</a></li>
+                                            <li><a href="javascript:;"><i class="fa fa-heart"></i> Thêm vào danh sách yêu thích</a></li>
+                                            <li><a href="javascript:;"><i class="fa fa-chart-line"></i> So sánh</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -61,7 +61,11 @@
                                             foreach($row as $item) {
                                         ?>
                                         
-                                            <li><a href=""><?php Common::checkEmptyStr($item["cate_name"]); ?></a></li>
+                                            <li>
+                                                <a href="<?php echo Common::template_directory(); ?>/DanhMuc/Index/<?php echo Common::generateSlug($item["cate_name"]); ?>/<?php echo $item["category_id"] ?>">
+                                                    <?php Common::checkEmptyStr($item["cate_name"]); ?>
+                                                </a>
+                                            </li>
                                         
                                         <?php } ?>
                                     </ul>
@@ -74,7 +78,7 @@
                                             foreach($row as $item) {
                                         ?>
                                         
-                                            <li><a href=""><?php Common::checkEmptyStr($item["tag_name"]); ?></a></li>
+                                            <li><a href="<?php echo Common::template_directory(); ?>/Tag/Index/<?php echo Common::generateSlug($item["tag_name"]); ?>/<?php echo $item["tag_id"] ?>"><?php Common::checkEmptyStr($item["tag_name"]); ?></a></li>
                                         
                                         <?php } ?>
                                     </ul>

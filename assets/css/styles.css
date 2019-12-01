@@ -321,6 +321,9 @@ section#slider {
     font-size: 1.8em;
     color: #555;
 }
+.hot-deal-box .item h1 a {
+    text-decoration: none;
+}
 .count-down ul {
     list-style: none;
     padding: 0;
@@ -701,6 +704,14 @@ section#breadcrumb ul li:last-child:after { content: ""}
 .product-img-inner {
     border: 1px solid #e9ecef;
     text-align: center;
+}
+
+/*
+    @ Cart
+*/
+section#cart-detail table tr td a {
+    text-decoration: none;
+    color: #fff;
 }
 
 /*

@@ -7,7 +7,7 @@
             <?php 
                 $row = $data["category"];
                 foreach($row as $item) {
-                    $permalink = Common::template_directory()."/DanhMuc/".Common::generateSlug($item["cate_name"])."/".$item["category_id"]."";
+                    $permalink = Common::template_directory()."/DanhMuc/Index/".Common::generateSlug($item["cate_name"])."/".$item["category_id"]."";
             ?>
                 <li><a href="<?php echo $permalink; ?>"><?php echo $item["cate_name"]; ?></a></li>
             <?php } ?>
@@ -20,9 +20,15 @@
         <h3>Lọc theo giá</h3>
     </div>
     <div class="widget-content">
-        <form action="" method="get">
+        <form action="<?php echo Comm::template_directory(); ?>/Filter" method="get">
             <div class="form-group">
-                <input type="range" class="custom-range" id="customRange1" class="form-control" />
+                <label for="txtPriceFrom">Từ:</label>
+                <input type="number" class="form-control" id="txtPriceFrom" name="txtPriceFrom" value="0" min="0" class="form-control" />
+                
+            </div>
+            <div class="form-group">
+                <label for="txtPriceTo">Đến:</label>
+                <input type="number" class="form-control" name="txtPriceTo" id="txtPriceTo" value="0" min="100000" class="form-control" />
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Lọc</button>
@@ -40,7 +46,7 @@
             <?php 
                 $row = $data["tags"];
                 foreach($row as $item) {
-                    $permalink = Common::template_directory()."/Tag/".Common::generateSlug($item["tag_name"])."/".$item["tag_id"]."";
+                    $permalink = Common::template_directory()."/Tag/Index/".Common::generateSlug($item["tag_name"])."/".$item["tag_id"]."";
             ?>
                 <li><a href="<?php echo $permalink; ?>"><?php echo $item["tag_name"]; ?></a></li>
             <?php } ?>

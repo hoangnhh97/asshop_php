@@ -96,21 +96,30 @@
         }
 
         public function Update() {
-            $id = Common::getPOST("txtItemId");
-            $quantity = Common::getPOST("txtItemQuantity");
+            // if(!empty($_POST["list_item_id"]) && !empty($_POST["list_item_quantity"])) {
+                
+            // }
 
+            $list_item_id = Common::getPOST("list_item_id");
+            $list_item_quantity = Common::getPOST("list_item_quantity");
+
+            
             $cookie_data = stripslashes($_COOKIE['_product_in_cart']);
             $cart_data = json_decode($cookie_data, true);
+            $i = 0;
             foreach($cart_data as $keys => $values)
             {
-                if($cart_data[$keys]['item_id'] == $id)
+                if($cart_data[$keys]['item_id'] == $list_item_id[$i])
                 {
-                    $cart_data[$keys]['item_quantity'] = $quantity;
+                    $cart_data[$keys]['item_quantity'] = $list_item_quantity[$i];
                     $item_data = json_encode($cart_data, JSON_UNESCAPED_UNICODE);
                     setcookie("_product_in_cart", $item_data, time() + 3600, "/");
-                    header("location:".Common::template_directory()."/GioHang");
                 }
+
+                $i++;
             }
+
+            header("location:".Common::template_directory()."/GioHang");
             
         }
     }

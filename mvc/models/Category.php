@@ -41,6 +41,23 @@
         }
 
 
+        public function getSingleCateById($cate_id) {
+            try {
+                $con = $this->GetDB();
+                $query = "SELECT * FROM category WHERE category_id=:category_id";
+                $stmt = $con->prepare($query);
+                $stmt->bindParam(":category_id", $cate_id);
+                $stmt->execute();
+
+                $result = $stmt->fetch();
+                $con = null;
+                return $result;
+            } catch(PDOException $e) {
+                return array();
+            }
+        }
+
+
         public function getAllCategoryByProductId($product_id) {
             try {
                 $con = $this->GetDB();

@@ -9,13 +9,13 @@
                 $category = new Category();
                 $result = $category->get_All_Category();
             ?>
-            <select id="ddlCategories" name="s" class="form-control">
+            <select id="ddlCategories" name="cate" class="form-control">
                 <option value="">--Chọn danh mục--</option>
                 <?php foreach($result as $item) { ?>
                     <option value="<?php Common::checkEmptyStr($item["category_id"]); ?>"><?php Common::checkEmptyStr($item["cate_name"]) ?></option>
                 <?php } ?>
             </select>
-            <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Tìm kiếm..." aria-label="Search">
+            <input class="form-control mr-sm-2" name="s" type="search" placeholder="Tìm kiếm..." aria-label="Search">
             <button class="btn-search my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
         </form>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -72,7 +72,7 @@
             <div class="navbar-right" id="shop-cart">
                 <ul>
                     <li><a href=""><i class="fa fa-heart"></i></a></li>
-                    <li class="cart"><a href=""><i class="fa fa-shopping-cart"></i><span class="count-item">0</span></a></li>
+                    <li class="cart"><a href="<?php echo Common::template_directory(); ?>/GioHang"><i class="fa fa-shopping-cart"></i><span class="count-item">0</span></a></li>
                 </ul>
             </div>
         </div>

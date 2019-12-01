@@ -7,7 +7,7 @@
         <h3>Giỏ hàng</h3>
         <hr>    
         <form action="<?php echo Common::template_directory(); ?>/GioHang/Update" method="post">
-            <table class="table table-bordered" width="100%">
+            <table class="table table-bordered table-hover table-dark" width="100%">
                 <thead>
                     <tr>
                         <td width="5%">STT</td>
@@ -37,13 +37,13 @@
                                 </a>
                             </td>
                             <td><div class="quantity">
-                                    <input type="number" name="txtItemQuantity" value="<?php echo $values["item_quantity"]; ?>" min="1" max="50" step="1" value="1">
+                                    <input type="number" name="list_item_quantity[]" value="<?php echo $values["item_quantity"]; ?>" min="1" max="50" step="1" value="1">
                                 </div></td>
                             <td><?php echo $values["item_quantity"] .' x '. $values["item_price"]; ?></td>
                             <td><?php echo number_format($values["item_price"] * $values["item_quantity"]); ?> <span>₫</span></td>
                             <td class="text-center">
-                                    <input type="hidden" name="txtItemId" value="<?php echo $values["item_id"]; ?>"/>
-                                    <a href="<?php echo Common::template_directory(); ?>/GioHang/Delete/<?php echo $values["item_id"]; ?>" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                    <input type="hidden" name="list_item_id[]" value="<?php echo $values["item_id"]; ?>"/>
+                                    <a href="<?php echo Common::template_directory(); ?>/GioHang/Delete/<?php echo $values["item_id"]; ?>"><i class="fa fa-times"></i></a>
                             </td>
                         </tr>
                     <?php $index++; } ?>

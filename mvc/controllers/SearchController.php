@@ -1,7 +1,7 @@
 <?php 
     class SearchController extends Controller {
 
-        public function Index($keyword, $cate) {
+        public function Index($keyword = null, $cate = null) {
             
             $modelProduct = $this->model("Products");
             $modelFilter = $this->model("Filters");

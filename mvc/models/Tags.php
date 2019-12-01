@@ -42,6 +42,24 @@
         }
 
 
+        public function getSingleTag($tag_id) {
+            try {
+                $con = $this->GetDB();
+                $query = "SELECT * FROM tags WHERE tag_id=:tagid";
+                $stmt = $con->prepare($query);
+                $stmt->bindParam(":tagid", $tag_id);
+                $stmt->execute();
+
+                $result = $stmt->fetch();
+                $con = null;
+                return $result;
+            } catch(PDOException $e) {
+                return array();
+            }
+        }
+
+        
+
     }
 
 
