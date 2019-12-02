@@ -118,21 +118,33 @@
             }
         }
 
-        public function get_Product_By_PrId_And_CateId_Without_UNIQUE($product_id, $cate_id) {
+
+        public function delete_all_cate_of_product($product_id) {
             try {
                 $con = $this->GetDB();
-                $query = "SELECT * FROM product_with_cate WHERE
-                        product_id = :productid AND category_id=:cateid";
+                $query = "DELETE FROM product_with_cate WHERE product_id=:productid";
                 $stmt = $con->prepare($query);
                 $stmt->bindParam(":productid", $product_id);
-                $stmt->bindParam(":cateid", $cate_id);
-                $stmt->execute();
-
-                $result = $stmt->fetchAll();
+                $result = $stmt->execute();
                 $con = null;
                 return $result;
             } catch(PDOException $e) {
-                return array();
+                return 0;
+            }
+        }
+
+        public function delete_Cate_of_Product_by_Cateid($product_id, $cate_id) {
+            try {
+                $con = $this->GetDB();
+                $query = "DELETE FROM product_with_cate WHERE product_id=:productid  AND category_id=:cateid";
+                $stmt = $con->prepare($query);
+                $stmt->bindParam(":productid", $product_id);
+                $stmt->bindParam(":cateid", $cate_id);
+                $result = $stmt->execute();
+                $con = null;
+                return $result;
+            } catch(PDOException $e) {
+                return 0;
             }
         }
 

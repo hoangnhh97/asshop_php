@@ -27,9 +27,9 @@ $(document).ready(function() {
 
   $('.btnDelete').on('click', function() {
 
-      var $user_id = $(this).attr('data-id');
+      var $id = $(this).attr('data-id');
       
-      $redirect_to_delete = getUrl() + '/Xoa/' + $user_id;
+      $redirect_to_delete = getUrl() + '/Xoa/' + $id;
 
       $('.btnAcceptDelete').attr('href', $redirect_to_delete);
 

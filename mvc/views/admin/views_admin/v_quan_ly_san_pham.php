@@ -104,13 +104,13 @@
                                 <input type="number" placeholder="Giá" value="<?php Common::checkEmptyStr($values["price"]); ?>" name="txtPrice" min="0" class="form-control"/>
                             </div>
                             <div class="form-group col-md-6">
-                            <input type="number" placeholder="Giá mới" <?php Common::checkEmptyStr($values["new_price"]); ?> name="txtNewPrice" class="form-control"/>
+                            <input type="number" placeholder="Giá mới" value="<?php Common::checkEmptyStr($values["new_price"]); ?>" name="txtNewPrice" class="form-control"/>
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="text" placeholder="Nhãn hiệu" <?php Common::checkEmptyStr($values["brand"]); ?> name="txtBrand" class="form-control"/>
+                                <input type="text" placeholder="Nhãn hiệu" value="<?php Common::checkEmptyStr($values["brand"]); ?>" name="txtBrand" class="form-control"/>
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="text" placeholder="Xuất xứ" <?php Common::checkEmptyStr($values["model"]); ?> name="txtModel" class="form-control"/>
+                                <input type="text" placeholder="Xuất xứ" value="<?php Common::checkEmptyStr($values["model"]); ?>" name="txtModel" class="form-control"/>
                             </div>
                             <div class="form-group col-md-6">
                                 <input type="hidden" name="hdImage" value="<?php Common::checkEmptyStr($values["image"]); ?>"/>

@@ -58,7 +58,7 @@
 
 
         public function QuanLySanPham($param = null, $id = null) {
-            $redirect_root = Common::template_directory() . "/Admin/QuanLyNguoiDung";
+            $redirect_root = Common::template_directory() . "/Admin/QuanLySanPham";
             $action=0;
             $modelProduct = $this->model("Products");
             $modelCate = $this->model("Category");
@@ -94,6 +94,72 @@
         }
 
 
+        public function QuanLyDanhMuc($param = null, $id = null) {
+            $redirect_root = Common::template_directory() . "/Admin/QuanLyDanhMuc";
+            $action=0;
+            $modelCate = $this->model("Category");
+            if(!empty($id)) {
+                if($param == "Sua") {
+                    $action = 2;
+                } else if($param == "Xoa") {
+                    $action = 3;
+                    $this->action->DeleteCategory($id);
+                    header("Location:$redirect_root");
+                } 
+            } else {
+                if($param == "Them" && empty($id)) {
+                    $action = 1;
+                }
+            } 
+            
+
+            if(isset($_POST["btnThem"])) {
+                $this->action->CreateNewCategory();
+            }
+
+            if(isset($_POST["btnSua"])) {
+                $this->action->EditCategory($id);
+            }
+            $this->view("admin/views_admin/v_quan_ly_danh_muc", [
+                "action"=>$action,
+                "singleCategory"=>$modelCate->get_Single_Cate($id),
+                "categories"=>$modelCate->get_All_Category(),
+            ]);
+        }
+
+        public function QuanLyQuyen($param = null, $id = null) {
+            $redirect_root = Common::template_directory() . "/Admin/QuanLyQuyen";
+            $action=0;
+            $modelRole = $this->model("Roles");
+            if(!empty($id)) {
+                if($param == "Sua") {
+                    $action = 2;
+                } else if($param == "Xoa") {
+                    $action = 3;
+                    $this->action->DeleteRole($id);
+                    header("Location:$redirect_root");
+                } 
+            } else {
+                if($param == "Them" && empty($id)) {
+                    $action = 1;
+                }
+            } 
+            
+
+            if(isset($_POST["btnThem"])) {
+                $this->action->CreateNewRole();
+                var_dump($this->action->CreateNewRole());
+            }
+
+            if(isset($_POST["btnSua"])) {
+                $this->action->EditRole($id);
+            }
+            $this->view("admin/views_admin/v_quan_ly_quyen", [
+                "action"=>$action,
+                "singleRole"=>$modelRole->get_Single_Role($id),
+                "roles"=>$modelRole->get_All_Role(),
+            ]);
+        }
 
        
     }
