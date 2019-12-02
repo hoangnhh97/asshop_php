@@ -2,7 +2,29 @@
     $rool = Common::template_directory();
     include_once("./mvc/views/admin/shared_admin/v_header.php");
 ?>
+<!-- BEGIN Modal Delete -->
 
+<div class="modal fade" id="deleteData" tabindex="-1" role="dialog" aria-labelledby="deleteData" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteDataModalTitle">Thông báo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Bạn có muốn xóa dữ liệu đang chọn không?
+      </div>
+      <div class="modal-footer">
+        <a href="" type="button" class="btnAcceptDelete btn btn-primary">Đồng ý</a>
+        <a href="javascript:;" type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END Modal Delete -->
 <section>
     <div class="container">
         <?php if($data["action"] == 0) { ?>
@@ -14,7 +36,7 @@
                     <p>
                         <a href="<?php echo $root; ?>/Admin/QuanLyNguoiDung/Them" class="btn btn-primary"><i class="fa fa-plus-square"></i> Thêm mới</a>
                     </p>
-                    <table class="table table-striped table-bordered" id="dataTable">
+                    <table class="table table-striped table-bordered" id="dataTable" width="100%">
                         <thead>
                             <tr>
                                 <th>STT</th>
@@ -48,7 +70,7 @@
                                     <td>
                                         <a href="<?php echo $root; ?>/Admin/QuanLyNguoiDung/Sua/<?php echo $item["user_id"]; ?>" class="btn btn-info"><i class="fa fa-pencil-alt"></i></a>
                                         <!-- <i href="" class="btn btn-warning"><i class="fa fa-eye"></i></a> -->
-                                        <a href="<?php echo $root; ?>/Admin/QuanLyNguoiDung/Xoa/<?php echo $item["user_id"]; ?>" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
+                                        <a href="javascript:;" class="btnDelete btn btn-danger" data-toggle="modal" data-target="#deleteData" data-id="<?php echo $item["user_id"] ?>"><i class="fa fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                             <?php

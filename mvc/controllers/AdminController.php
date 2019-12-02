@@ -57,6 +57,43 @@
         
 
 
+        public function QuanLySanPham($param = null, $id = null) {
+            $redirect_root = Common::template_directory() . "/Admin/QuanLyNguoiDung";
+            $action=0;
+            $modelProduct = $this->model("Products");
+            $modelCate = $this->model("Category");
+            if(!empty($id)) {
+                if($param == "Sua") {
+                    $action = 2;
+                } else if($param == "Xoa") {
+                    $action = 3;
+                    $this->action->DeleteProduct($id);
+                    header("Location:$redirect_root");
+                } 
+            } else {
+                if($param == "Them" && empty($id)) {
+                    $action = 1;
+                }
+            } 
+            
+
+            if(isset($_POST["btnThem"])) {
+                $this->action->CreateNewProduct();
+            }
+
+            if(isset($_POST["btnSua"])) {
+                $this->action->EditProduct($id);
+            }
+            $this->view("admin/views_admin/v_quan_ly_san_pham", [
+                "action"=>$action,
+                "categorybyid"=>$modelCate->get_Category_by_Product_Id($id),
+                "singleProduct"=>$modelProduct->getSingleProduct($id),
+                "categories"=>$modelCate->get_All_Category(),
+                "products"=>$modelProduct->get_All_Products(),
+            ]);
+        }
+
+
 
        
     }
