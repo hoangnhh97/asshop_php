@@ -161,6 +161,44 @@
             ]);
         }
 
+
+
+        public function QuanLyDonHang($param = null, $id = null) {
+            $redirect_root = Common::template_directory() . "/Admin/QuanLyDonHang";
+            $action=0;
+            $modelOrders = $this->model("Orders");
+            $modelOrderDetails = $this->model("OrderDetails");
+            if(!empty($id)) {
+                if($param == "Sua") {
+                    $action = 2;
+                } else if($param == "Xoa") {
+                    $action = 3;
+                    $this->action->DeleteOrder($id);
+                    header("Location:$redirect_root");
+                } 
+            } else {
+                if($param == "Them" && empty($id)) {
+                    $action = 1;
+                }
+            } 
+            
+
+            if(isset($_POST["btnThem"])) {
+                $this->action->CreateNewOrder();
+                var_dump($this->action->CreateNewOrder());
+            }
+
+            if(isset($_POST["btnSua"])) {
+                $this->action->EditOrder($id);
+            }
+            $this->view("admin/views_admin/v_quan_ly_don_hang", [
+                "action"=>$action,
+                "singleOrder"=>$modelOrders->get_Single_Order($id),
+                "orders"=>$modelOrders->get_All_Orders(),
+            ]);
+        }
+
+
        
     }
 ?>

@@ -29,8 +29,15 @@
             try {
                 $con = $this->GetDB();
                 $product_name = "%$name%";
-                $query = "SELECT DISTINCT * FROM product_with_cate pwc, products p WHERE pwc.product_id=p.product_id
+                $query = "";
+                if(!empty($name) && $name != "null" && !empty($cate_id)) {
+                    $query = "SELECT DISTINCT * FROM product_with_cate pwc, products p WHERE pwc.product_id=p.product_id
+                            AND pwc.category_id =:cate_id AND p.name LIKE :product_name GROUP BY p.name";
+                } else {
+                    $query = "SELECT DISTINCT * FROM product_with_cate pwc, products p WHERE pwc.product_id=p.product_id
                             AND pwc.category_id =:cate_id OR p.name LIKE :product_name GROUP BY p.name";
+                }
+                
                 $stmt = $con->prepare($query);
                 $stmt->bindParam(":cate_id", $cate_id);
                 $stmt->bindParam(":product_name", $product_name);

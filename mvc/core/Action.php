@@ -515,6 +515,86 @@
             }
         }
 
+
+
+
+        
+         //Order Management
+         public function CreateNewOrder() {
+            $name = Common::getPOST("txtName");
+            $email = Common::getPOST("txtEmail");
+            $phone = Common::getPOST("txtPhone");
+            $address = Common::getPOST("txtAddress");
+            $shipping_date = Common::getPOST("txtShippingDate");
+            $status = Common::getPOST("ddlStatus");
+            $payment = Common::getPOST("ddlPaymentMethod");
+            $notes = Common::getPOST("txtNotes");
+            $user_id = "";
+            if(isset($_SESSION["userid"])) {
+                $user_id = $_SESSION["userid"];
+            }
+            if(empty($name) || empty($email) || empty($phone)) {
+                $this->setAlert("Thêm thất bại. Vui lòng nhập đầy đủ thông tin!", "error");
+                return;
+            }
+           
+
+            $orders = new Orders();
+            $result = $orders->insert_Order($user_id, $name, $email, $phone, $address, $notes,
+            $shipping_date, $status, $payment);
+            
+            if($result) {
+                $this->setAlert("Thêm mới thành công!", "success");
+            } else {
+                $this->setAlert("Thêm mới thất bại. Vui lòng kiểm tra lại thông tin!", "error");
+            }
+        }
+
+
+
+        public function EditOrder($order_id) {
+            $name = Common::getPOST("txtName");
+            $email = Common::getPOST("txtEmail");
+            $phone = Common::getPOST("txtPhone");
+            $address = Common::getPOST("txtAddress");
+            $shipping_date = Common::getPOST("txtShippingDate");
+            $status = Common::getPOST("ddlStatus");
+            $payment = Common::getPOST("ddlPaymentMethod");
+            $notes = Common::getPOST("txtNotes");
+            $user_id = "";
+            if(isset($_SESSION["userid"])) {
+                $user_id = $_SESSION["userid"];
+            }
+            if(empty($name) || empty($email) || empty($phone)) {
+                $this->setAlert("Thêm thất bại. Vui lòng nhập đầy đủ thông tin!", "error");
+                return;
+            }
+           
+
+            $orders = new Orders();
+            $result = $orders->update_Order($order_id, $user_id, $name, $email, $phone, $address, $notes,
+            $shipping_date, $status, $payment);
+            if($result) {
+                $this->setAlert("Cập nhật thành công!", "success");
+            } else {
+                $this->setAlert("Cập nhật thất bại. Vui lòng kiểm tra lại thông tin!", "error");
+            }
+        }
+
+        public function DeleteOrder($order_id) {
+            if(empty($order_id)) {
+                $this->setAlert("Xóa bại. Vui lòng nhập đầy đủ thông tin!", "error");
+            }
+
+            $orders = new Orders();
+            $result = $orders->delete_Order($order_id);
+            if($result) {
+                $this->setAlert("Xóa thành công!", "success");
+            } else {
+                $this->setAlert("Xóa thất bại. Vui lòng kiểm tra lại thông tin!", "error");
+            }
+        }
+
     }
 
 ?>

@@ -1,14 +1,17 @@
 <?php 
     class Admin {
-        
-
         public function model($model) {
             require_once "./mvc/models/".$model.".php";
             return new $model;
         }
 
         public function view($view, $data=[]) {
-            require_once "./mvc/views/".$view.".php";
+            if(isset($_SESSION["role"]) == "1") {
+                require_once "./mvc/views/".$view.".php";
+            } else {
+                $redirect = Common::template_directory();
+                header("Location:$redirect");
+            }
         }
 
         public function setAlert($message, $type) {
@@ -29,6 +32,10 @@
         }
 
 
+        
+            
+    
+       
         
 
         

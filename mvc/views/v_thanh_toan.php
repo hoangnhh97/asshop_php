@@ -6,6 +6,45 @@
     <div class="container">
         <h3>Giỏ hàng</h3>
         <hr>    
+        <?php 
+            $check_Order = $data["singleOrder"]; 
+            if($check_Order == true) {
+        ?>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <dl>
+                        <dt>Đơn hàng:</dt>
+                        <dd><span>#</span><?php echo $check_Order["order_id"]; ?></dd>
+                        <dt>Tên người nhận:</dt>
+                        <dd><?php echo $check_Order["full_name"]; ?></dd>
+                        <dt>Email:</dt>
+                        <dd><?php echo $check_Order["order_email"]; ?></dd>
+                        <dt>Số điện thoại</dt>
+                        <dd><?php echo $check_Order["order_phone"]; ?></dd>
+                        <dt>Địa chỉ nhận hàng</dt>
+                        <dd><?php echo $check_Order["order_address"]; ?></dd>
+                        <dt>Thời gian dự kiến</dt>
+                        <dd>
+                            <?php echo $check_Order["shipping_date"]; ?>
+                        </dd>
+                        <dt>Tình trạng</dt>
+                        <dd>
+                            <?php if($check_Order["shipping_status"] == 0) { 
+                                echo 'Đang xử lý';
+                            } else if($check_Order["shipping_status"] == 1) {
+                                echo 'Đơn hàng đã giao cho shipper';
+                            } else if($check_Order["shipping_status"] == 2) {
+                                echo 'Đơn hàng đang được vận chuyển';
+                            } else if($check_Order["shipping_status"] == 3) {
+                                echo 'Đơn hàng hoàn tất';
+                            } ?>
+                        </dd>
+                        
+                    </dl>     
+                </div>
+            </div>
+        <?php } ?>
+        
         <?php if(isset($_COOKIE["_product_in_cart"])) { ?>
         <form action="<?php echo Common::template_directory(); ?>/ThanhToan/Index" method="post">
             <input type="hidden" name="txtUserId" value="<?php isset($_SESSION["userid"])? $_SESSION["userid"]: ""; ?>" class="form-control"/>
