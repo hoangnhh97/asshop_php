@@ -8,7 +8,7 @@
         <hr>    
         <?php if(isset($_COOKIE["_product_in_cart"])) { ?>
         <form action="<?php echo Common::template_directory(); ?>/ThanhToan/Index" method="post">
-            <input type="hidden" name="txtUserId" value="<?php Common::checkEmptyStr($_SESSION["userid"]); ?>" class="form-control"/>
+            <input type="hidden" name="txtUserId" value="<?php isset($_SESSION["userid"])? $_SESSION["userid"]: ""; ?>" class="form-control"/>
             
             <div class="row">
                 <div class="col-md-8">
@@ -23,7 +23,7 @@
                                         <input type="text" name="txtFirstName" placeholder="Tên (*)" class="form-control"/>
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="text" name="txtFirstName" placeholder="Họ (*)" class="form-control"/>
+                                        <input type="text" name="txtLastName" placeholder="Họ (*)" class="form-control"/>
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                 <input type="text" name="txtCity" placeholder="Huyện/Thành phố (*)" class="form-control"/>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="" placeholder="Đất nước (Tùy chọn)" class="form-control"/>
+                                <input type="text" name="txtCountry" placeholder="Đất nước (Tùy chọn)" class="form-control"/>
                             </div>
                             <div class="form-group">
                                 <input type="text" name="txtPhoneNumber" placeholder="Số điện thoại (*)" class="form-control"/>
@@ -46,7 +46,7 @@
                                 <textarea type="text" name="txtNote" placeholder="Ghi chú (Tùy chọn)" rows="6" class="form-control"></textarea>
                             </div>
                             <div class="form-group text-right">
-                                <butotn type="submit" name="btnPlaceOrder" class="btn btn-primary">Đặt hàng</button>
+                                <button type="submit" name="btnPlaceOrder" class="btn btn-primary">Đặt hàng</button>
                             </div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                                 <div class="card">
                                     <div class="card-header" id="headingOne">
                                     <h5 class="mb-0">
-                                        <input type="radio" name="rdPaymentMethod" id="rdPaymentBank" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" />
+                                        <input type="radio" value="1" name="rdPaymentMethod" id="rdPaymentBank" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" />
                                         <label for="rdPaymentBank">Thanh toán qua ngân hàng</label>
                                     </h5>
                                     </div>
@@ -130,7 +130,7 @@
                                 <div class="card">
                                     <div class="card-header" id="headingTwo">
                                     <h5 class="mb-0">
-                                        <input type="radio" name="rdPaymentMethod" id="rdPaymentDelevery" checked data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <input type="radio" value="1" name="rdPaymentMethod" id="rdPaymentDelevery" checked data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                         <label for="rdPaymentDelevery">Thanh toán khi giao hàng</label>
                                     
                                     </h5>
@@ -146,7 +146,6 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" value="<?php echo substr($list_id, strlen($list_id) - 1); ?>" />
         </form>
         <?php } else { ?>
             <div class="">
