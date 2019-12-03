@@ -64,6 +64,12 @@
                 Đơn hàng
             </a>
     </li>
+    <li class="nav-item">
+      <a href="<?php echo $root ?>/Admin/QuanLyChiTietDonHang" class="nav-link text-dark font-italic">
+                <i class="fa fa-box mr-3 text-primary fa-fw"></i>
+                Chi tiết đơn hàng
+            </a>
+    </li>
   </ul>
 
   

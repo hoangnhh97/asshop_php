@@ -488,7 +488,7 @@
             $role_desc = Common::getPOST("txtDesc");
 
             if(empty($role_name) || empty($role_desc)) {
-                $this->setAlert("Thêm thất bại. Vui lòng nhập đầy đủ thông tin!", "error");
+                $this->setAlert("Cập nhật thất bại. Vui lòng nhập đầy đủ thông tin!", "error");
                 return;
             }
 
@@ -550,7 +550,37 @@
             }
         }
 
+        public function CreateNewOrderDetails($id, $modelProducts) {
+            $product_id = Common::getPOST("ddlProduct");
+            $quantity = Common::getPOST("txtQuantity");
+            if(empty($product_id) || empty($id)) {
+                $this->setAlert("Thêm thất bại. Vui lòng nhập đầy đủ thông tin!", "error");
+                return;
+            }
+            
+            $order_details = new OrderDetails();
+            $price = 0;
+            $total = 0;
+            $values = $modelProducts->getSingleProduct($product_id);
+            if($values["new_price"] != 0) {
+                $price = $values["new_price"];
+            } else {
+                $price = $values["price"];
+            }
+            $total = $price * (int)$quantity;
+            $result = $order_details->insert_Order_Details($id, $product_id, $quantity, $total);
 
+            
+           
+            
+            if($result) {
+                $this->setAlert("Thêm mới thành công!", "success");
+            } else {
+                $this->setAlert("Thêm mới thất bại. Vui lòng kiểm tra lại thông tin!", "error");
+            }
+        }
+
+        
 
         public function EditOrder($order_id) {
             $name = Common::getPOST("txtName");
@@ -566,7 +596,7 @@
                 $user_id = $_SESSION["userid"];
             }
             if(empty($name) || empty($email) || empty($phone)) {
-                $this->setAlert("Thêm thất bại. Vui lòng nhập đầy đủ thông tin!", "error");
+                $this->setAlert("Cập nhật thất bại. Vui lòng nhập đầy đủ thông tin!", "error");
                 return;
             }
            
@@ -578,6 +608,47 @@
                 $this->setAlert("Cập nhật thành công!", "success");
             } else {
                 $this->setAlert("Cập nhật thất bại. Vui lòng kiểm tra lại thông tin!", "error");
+            }
+        }
+
+        public function EditOrderDetail($order_detail_id, $modelProducts) {
+            $product_id = Common::getPOST("ddlProduct");
+            $quantity = Common::getPOST("txtQuantity");
+            $order_id = Common::getPOST("ddlOrder");
+            if(empty($product_id) || empty($order_id)) {
+                $this->setAlert("Cập nhật thất bại. Vui lòng nhập đầy đủ thông tin!", "error");
+                return;
+            }
+            
+            $orderdetails = new OrderDetails();
+            $price = 0;
+            $total = 0;
+            $values = $modelProducts->getSingleProduct($product_id);
+            if($values["new_price"] != 0) {
+                $price = $values["new_price"];
+            } else {
+                $price = $values["price"];
+            }
+            $total = $price * (int)$quantity;
+            $result = $orderdetails->update_Order_Detail($order_detail_id, $order_id, $product_id, $quantity, $total);
+            if($result) {
+                $this->setAlert("Cập nhật thành công!", "success");
+            } else {
+                $this->setAlert("Cập nhật thất bại. Vui lòng kiểm tra lại thông tin!", "error");
+            }
+        }
+
+        public function DeleteOrderDetail($order_detail_id) {
+            if(empty($order_detail_id)) {
+                $this->setAlert("Xóa bại. Vui lòng nhập đầy đủ thông tin!", "error");
+            }
+
+            $orderdetails = new OrderDetails();
+            $result = $orderdetails->delete_Order_Detail($order_detail_id);
+            if($result) {
+                $this->setAlert("Xóa thành công!", "success");
+            } else {
+                $this->setAlert("Xóa thất bại. Vui lòng kiểm tra lại thông tin!", "error");
             }
         }
 

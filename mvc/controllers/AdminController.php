@@ -167,6 +167,7 @@
             $redirect_root = Common::template_directory() . "/Admin/QuanLyDonHang";
             $action=0;
             $modelOrders = $this->model("Orders");
+            $modelProducts = $this->model("Products");
             $modelOrderDetails = $this->model("OrderDetails");
             if(!empty($id)) {
                 if($param == "Sua") {
@@ -175,6 +176,8 @@
                     $action = 3;
                     $this->action->DeleteOrder($id);
                     header("Location:$redirect_root");
+                } else if($param == "ThemCTDH") {
+                    $action = 4;
                 } 
             } else {
                 if($param == "Them" && empty($id)) {
@@ -185,7 +188,10 @@
 
             if(isset($_POST["btnThem"])) {
                 $this->action->CreateNewOrder();
-                var_dump($this->action->CreateNewOrder());
+            }
+
+            if(isset($_POST["btnThemCTDH"])) {
+                $this->action->CreateNewOrderDetails($id, $modelProducts);
             }
 
             if(isset($_POST["btnSua"])) {
@@ -193,12 +199,44 @@
             }
             $this->view("admin/views_admin/v_quan_ly_don_hang", [
                 "action"=>$action,
+                "products"=>$modelProducts->get_All_Products(),
                 "singleOrder"=>$modelOrders->get_Single_Order($id),
                 "orders"=>$modelOrders->get_All_Orders(),
             ]);
         }
 
+        public function QuanLyChiTietDonHang($param = null, $id = null) {
+            $redirect_root = Common::template_directory() . "/Admin/QuanLyChiTietDonHang";
+            $action=0;
+            $modelOrderDetails = $this->model("OrderDetails");
+            $modelOrders = $this->model("Orders");
+            $modelProducts = $this->model("Products");
+            if(!empty($id)) {
+                if($param == "Sua") {
+                    $action = 2;
+                } else if($param == "Xoa") {
+                    $action = 3;
+                    $this->action->DeleteOrderDetail($id);
+                    header("Location:$redirect_root");
+                }
+            } else {
+                if($param == "Them" && empty($id)) {
+                    $action = 1;
+                }
+            } 
+            
+            if(isset($_POST["btnSua"])) {
+                $this->action->EditOrderDetail($id, $modelProducts);
+            }
 
+            $this->view("admin/views_admin/v_quan_ly_chi_tiet_don_hang", [
+                "action"=>$action,
+                "orders"=>$modelOrders->get_All_Orders(),
+                "products"=>$modelProducts->get_All_Products(),
+                "singleOrderDetail"=>$modelOrderDetails->get_Single_Order_Detail($id),
+                "orderdetails"=>$modelOrderDetails->get_All_Order_Details(),
+            ]);
+        }
        
     }
 ?>

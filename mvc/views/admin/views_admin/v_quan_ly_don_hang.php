@@ -86,7 +86,7 @@
                                     <td><?php Common::checkEmptyStr($item["order_notes"]); ?></td>
                                     <td>
                                         <a href="<?php echo $root; ?>/Admin/QuanLyDonHang/Sua/<?php echo $item["order_id"]; ?>" class="btn btn-info"><i class="fa fa-pencil-alt"></i></a>
-                                        <!-- <a href="<?php echo $root; ?>/Admin/QuanLyDonHang/ChiTiet/<?php echo $item["order_id"]; ?>" class="btn btn-warning"><i class="fa fa-eye"></i></a> -->
+                                        <a href="<?php echo $root; ?>/Admin/QuanLyDonHang/ThemCTDH/<?php echo $item["order_id"]; ?>" class="btn btn-warning"><i class="fa fa-plus-square"></i></a>
                                         <a href="javascript:;" class="btnDelete btn btn-danger" data-toggle="modal" data-target="#deleteData" data-id="<?php echo $item["order_id"] ?>"><i class="fa fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
@@ -226,6 +226,45 @@
                         </div>
                         <div class="form-group">
                             <button type="submit" name="btnThem" class="btn btn-primary">Thêm</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <a href="<?php echo $root; ?>/Admin/QuanLyDonHang">Trở về</a>
+                </div>
+            </div>
+        <?php } else if($data["action"] == 4) { ?>
+            <div class="card">
+                <div class="card-header">
+                    <h3>Thêm chi tiết đơn hàng</h3>
+                </div>
+                <div class="card-body">
+                    <?php $values = $data["singleOrder"]; ?>
+                    <form action="<?php echo $root; ?>/Admin/QuanLyDonHang/ThemCTDH/<?php Common::checkEmptyStr($values["order_id"]) ?>" method="post" id="create-new-form">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <input type="text" readonly placeholder="Mã đơn hàng" value="<?php echo $values["order_id"]; ?>" name="txtOrderId" class="form-control"/>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <?php 
+                                    $row = $data["products"];
+                                    
+                                        
+                                ?>
+                                <select name="ddlProduct" class="form-control">
+                                    <option>--Chọn sản phẩm--</option>
+                                    <?php foreach($row as $values) { ?>
+                                        <option value="<?php Common::checkEmptyStr($values["product_id"]) ?>"><?php Common::checkEmptyStr($values["name"]) ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="number" placeholder="Số lượng" value="1" name="txtQuantity" min="1" max="50" class="form-control"/>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" name="btnThemCTDH" class="btn btn-primary">Thêm</button>
                         </div>
                     </form>
                 </div>
