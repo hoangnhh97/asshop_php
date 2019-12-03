@@ -48,6 +48,7 @@
             $user = new Users();
             $checkUser = $user->get_Login_User($username, $pass);
             if(count($checkUser) > 0) {
+                $_SESSION["userid"] = $checkUser["user_id"];
                 $_SESSION["email"] = $checkUser["email"];
                 $_SESSION["role"] = $checkUser["role_id"];
                 $this->setAlert("Đăng nhập thành công!", "success");

@@ -3,7 +3,7 @@
 
         public function Logout() {
     
-
+            unset($_SESSION["userid"]);
             unset($_SESSION["email"]);
             unset($_SESSION["role"]);
             
