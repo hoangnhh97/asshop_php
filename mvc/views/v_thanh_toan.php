@@ -6,8 +6,10 @@
     <div class="container">
         <h3>Giỏ hàng</h3>
         <hr>    
+        <?php if(isset($_COOKIE["_product_in_cart"])) { ?>
         <form action="<?php echo Common::template_directory(); ?>/ThanhToan/Index" method="post">
-           
+            <input type="hidden" name="txtUserId" value="<?php Common::checkEmptyStr($_SESSION["userid"]); ?>" class="form-control"/>
+            
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
@@ -43,10 +45,9 @@
                             <div class="form-group">
                                 <textarea type="text" name="txtNote" placeholder="Ghi chú (Tùy chọn)" rows="6" class="form-control"></textarea>
                             </div>
-                            <div class="form-group">
-                                <input type="hidden" name="txtUserId" value="<?php Common::checkEmptyStr($_SESSION["userid"]); ?>" class="form-control"/>
+                            <div class="form-group text-right">
+                                <butotn type="submit" name="btnPlaceOrder" class="btn btn-primary">Đặt hàng</button>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
@@ -69,6 +70,7 @@
                                     <?php 
                                         if(isset($_COOKIE["_product_in_cart"]))
                                         {
+                                            $list_id = "";
                                             $total = 0;
                                             $cookie_data = stripslashes($_COOKIE['_product_in_cart']);
                                             $cart_data = json_decode($cookie_data, true);
@@ -76,16 +78,15 @@
                                             foreach($cart_data as $keys => $values) {
                                                 $total += ($values["item_price"] * $values["item_quantity"]);
                                                 $subtotal = $values["item_price"] * $values["item_quantity"];
+                                                $list_id .= $values["item_id"] . ',';
                                     ?>
                                         <tr>
-                                        
                                             <td><?php echo $values["item_name"] . ' x ' . '<span class="badge badge-primary">'. $values["item_quantity"] .'</span>'; ?></td>
                                             <td><?php echo number_format($subtotal); ?> <span>₫</span></td>
                                         </tr>
                                     <?php 
                                                 $index++;
                                             }
-                                        }
                                     ?>
                                     <tr>
                                         <td>Tổng tiền</td>
@@ -99,7 +100,12 @@
                                         <td>Thành tiền</td>
                                         <td><?php echo number_format($total + 30000); ?> <span>₫</span></td>
                                     </tr>
-                                    
+                                    <?php } else {
+                                    ?>
+                                        <tr>
+                                            <td colspan="2" class="text-center">Không có sản phẩm</td>
+                                        </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                             <hr/>
@@ -108,7 +114,7 @@
                                 <div class="card">
                                     <div class="card-header" id="headingOne">
                                     <h5 class="mb-0">
-                                        <input type="radio" name="rdPaymentMethod" id="rdPaymentBank" checked data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" />
+                                        <input type="radio" name="rdPaymentMethod" id="rdPaymentBank" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" />
                                         <label for="rdPaymentBank">Thanh toán qua ngân hàng</label>
                                     </h5>
                                     </div>
@@ -124,7 +130,7 @@
                                 <div class="card">
                                     <div class="card-header" id="headingTwo">
                                     <h5 class="mb-0">
-                                        <input type="radio" name="rdPaymentMethod" id="rdPaymentDelevery" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <input type="radio" name="rdPaymentMethod" id="rdPaymentDelevery" checked data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                         <label for="rdPaymentDelevery">Thanh toán khi giao hàng</label>
                                     
                                     </h5>
@@ -140,7 +146,13 @@
                     </div>
                 </div>
             </div>
+            <input type="hidden" value="<?php echo substr($list_id, strlen($list_id) - 1); ?>" />
         </form>
+        <?php } else { ?>
+            <div class="">
+                <p class="alert alert-info">Không có sản phẩm nào để thanh toán. Vui lòng kiểm tra lại <a href="<?php echo Common::template_directory(); ?>/GioHang">Giỏ hàng</a></p>
+            </div>
+        <?php } ?>
     </div>
 </section>
 

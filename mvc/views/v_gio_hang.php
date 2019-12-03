@@ -81,22 +81,27 @@
                 </tfoot>
             </table>
         </form>
-        <div class="col-6">
+        <div class="col-md-6">
             <form action="<?php echo Common::template_directory(); ?>/ThanhToan/Index" method="post">
             
-                <table class="table table-bordered table-hover">
+                <?php if(isset($_COOKIE["_product_in_cart"])) { ?>
+                <table class="table table-bordered table-dark">
+                    <thead>
+                        <tr>
+                            <th>Thông tin</th>
+                            <th></th>
+                        </tr>
+                    </thead>
                     <tbody>
                         <tr>
-                            <td class="bg-dark text-white">Tổng tiền</td>
-                            <td><?php echo number_format($total); ?> <span>₫</span></td>
+                            <td>Phí vận chuyển</td>
+                            <td>
+                                Đồng giá 30,000 <span>₫</span>
+                            </td>
                         </tr>
                         <tr>
-                            <td class="bg-dark text-white">Phí vận chuyển</td>
-                            <td>Miễn phí vận chuyển</td>
-                        </tr>
-                        <tr>
-                            <td class="bg-dark text-white">Thành tiền</td>
-                            <td><strong><?php echo number_format($total); ?> <span>₫</span></strong></td>
+                            <td>Thành tiền</td>
+                            <td><strong><?php echo number_format($total + 30000); ?> <span>₫</span></strong></td>
                         </tr>
                         <tr>
                             <td>
@@ -106,6 +111,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <?php } ?>
             </form>
         </div>
     </div>
