@@ -34,6 +34,7 @@ $(document).ready(function() {
       $('.btnAcceptDelete').attr('href', $redirect_to_delete);
 
   });
+
 });
 
 function getUrl() {

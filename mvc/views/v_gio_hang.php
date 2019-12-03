@@ -22,12 +22,12 @@
                     <?php 
                         if(isset($_COOKIE["_product_in_cart"]))
                         {
-                        $total = 0;
-                        $cookie_data = stripslashes($_COOKIE['_product_in_cart']);
-                        $cart_data = json_decode($cookie_data, true);
-                        $index = 0;
-                        foreach($cart_data as $keys => $values) {
-                            $total += ($values["item_price"] * $values["item_quantity"]);
+                            $total = 0;
+                            $cookie_data = stripslashes($_COOKIE['_product_in_cart']);
+                            $cart_data = json_decode($cookie_data, true);
+                            $index = 0;
+                            foreach($cart_data as $keys => $values) {
+                                $total += ($values["item_price"] * $values["item_quantity"]);
                     ?>
                         <tr>
                             <td><?php echo $index+1; ?></td>
@@ -46,7 +46,10 @@
                                     <a href="<?php echo Common::template_directory(); ?>/GioHang/Delete/<?php echo $values["item_id"]; ?>"><i class="fa fa-times"></i></a>
                             </td>
                         </tr>
-                    <?php $index++; } ?>
+                    <?php 
+                        $index++; 
+                        } 
+                    ?>
                         <tr>
                             <td colspan="4" class="text-right"><strong>Thành tiền: </strong></td>
                             <td>
@@ -70,7 +73,7 @@
                             </div>
                         </td>
                         <td>
-                            <button type="submit" class="btn btn-primary d-block">
+                            <button type="submit" class="btn btn-primary b-block">
                                 Tính lại
                             </button>
                         </td>
@@ -78,6 +81,33 @@
                 </tfoot>
             </table>
         </form>
+        <div class="col-6">
+            <form action="<?php echo Common::template_directory(); ?>/ThanhToan/Index" method="post">
+            
+                <table class="table table-bordered table-hover">
+                    <tbody>
+                        <tr>
+                            <td class="bg-dark text-white">Tổng tiền</td>
+                            <td><?php echo number_format($total); ?> <span>₫</span></td>
+                        </tr>
+                        <tr>
+                            <td class="bg-dark text-white">Phí vận chuyển</td>
+                            <td>Miễn phí vận chuyển</td>
+                        </tr>
+                        <tr>
+                            <td class="bg-dark text-white">Thành tiền</td>
+                            <td><strong><?php echo number_format($total); ?> <span>₫</span></strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                
+                            </td>
+                            <td><button type="submit" class="btnCheckout btn btn-primary btn-block">Tiến hành thanh toán</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
     </div>
 </section>
 
