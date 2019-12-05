@@ -47,7 +47,7 @@
     
             $user = new Users();
             $checkUser = $user->get_Login_User($username, $pass);
-            if(count($checkUser) > 0) {
+            if($checkUser) {
                 $_SESSION["userid"] = $checkUser["user_id"];
                 $_SESSION["email"] = $checkUser["email"];
                 $_SESSION["role"] = $checkUser["role_id"];
@@ -81,7 +81,6 @@
             $type = "1";
             $roleid = "2";
             $createUser = $user->insert_User($first_name, $last_name, $email, $pass, $phone, $address, $type, $roleid);
-            var_dump($createUser);
             if($createUser) {
                 $this->setAlert("Đăng ký thành công!", "success");
             } else {

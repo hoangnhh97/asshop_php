@@ -3,7 +3,7 @@
         <footer>
             <div class="footer">
                 <div class="container">
-                    <h1>This is Footer</h1>
+                    <h3 class="text-white">ASSHOP</h3>
                 </div>
             </div>
             <div class="copyright pt-3 pb-3">
