@@ -517,6 +517,59 @@
 
 
 
+        //Tags Management
+        public function CreateNewTag() {
+            $product_id = Common::getPOST("txtProductId");
+            $tag_name = Common::getPOST("txtTagName");
+            if(empty($role_name) || empty($role_desc)) {
+                $this->setAlert("Thêm thất bại. Vui lòng nhập đầy đủ thông tin!", "error");
+                return;
+            }
+           
+
+            $tags = new Tags();
+            $result = $tags->insert_Tag($product_id, $tag_name);
+            
+            if($result) {
+                $this->setAlert("Thêm mới thành công!", "success");
+            } else {
+                $this->setAlert("Thêm mới thất bại. Vui lòng kiểm tra lại thông tin!", "error");
+            }
+        }
+
+
+
+        public function EditTag($tag_id) {
+            $product_id = Common::getPOST("txtProductId");
+            $tag_name = Common::getPOST("txtTagName");
+
+            if(empty($product_id) || empty($tag_name)) {
+                $this->setAlert("Cập nhật thất bại. Vui lòng nhập đầy đủ thông tin!", "error");
+                return;
+            }
+
+            $tags = new Tags();
+            $result = $tags->update_Tag($tag_id, $product_id, $tag_name);
+            if($result) {
+                $this->setAlert("Cập nhật thành công!", "success");
+            } else {
+                $this->setAlert("Cập nhật thất bại. Vui lòng kiểm tra lại thông tin!", "error");
+            }
+        }
+
+        public function DeleteTag($tag_id) {
+            if(empty($tag_id)) {
+                $this->setAlert("Xóa bại. Vui lòng nhập đầy đủ thông tin!", "error");
+            }
+
+            $tags = new Tags();
+            $result = $tags->delete_Tag($tag_id);
+            if($result) {
+                $this->setAlert("Xóa thành công!", "success");
+            } else {
+                $this->setAlert("Xóa thất bại. Vui lòng kiểm tra lại thông tin!", "error");
+            }
+        }
 
         
          //Order Management

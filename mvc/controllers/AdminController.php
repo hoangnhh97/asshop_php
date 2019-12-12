@@ -162,6 +162,41 @@
         }
 
 
+        public function QuanLyThe($param = null, $id = null) {
+            $redirect_root = Common::template_directory() . "/Admin/QuanLyThe";
+            $action=0;
+            $modelRole = $this->model("Tags");
+            if(!empty($id)) {
+                if($param == "Sua") {
+                    $action = 2;
+                } else if($param == "Xoa") {
+                    $action = 3;
+                    $this->action->DeleteTag($id);
+                    header("Location:$redirect_root");
+                } 
+            } else {
+                if($param == "Them" && empty($id)) {
+                    $action = 1;
+                }
+            } 
+            
+
+            if(isset($_POST["btnThem"])) {
+                $this->action->CreateNewTag();
+                var_dump($this->action->CreateNewTag());
+            }
+
+            if(isset($_POST["btnSua"])) {
+                $this->action->EditRole($id);
+            }
+            $this->view("admin/views_admin/v_quan_ly_the", [
+                "action"=>$action,
+                "singleTag"=>$modelRole->getSingleTag($id),
+                "tags"=>$modelRole->get_All_Tags(),
+            ]);
+        }
+
+
 
         public function QuanLyDonHang($param = null, $id = null) {
             $redirect_root = Common::template_directory() . "/Admin/QuanLyDonHang";
