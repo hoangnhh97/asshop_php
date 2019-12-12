@@ -30,8 +30,8 @@
                 $con = $this->GetDB();
                 $query = "INSERT INTO tags(tag_id, product_id, tag_name) VALUES (null, :productid, :tagname)";
                 $stmt = $con->prepare($query);
-                $stmt->bindParam(":productid", $role_name);
-                $stmt->bindParam(":tagname", $role_desc);
+                $stmt->bindParam(":productid", $product_id);
+                $stmt->bindParam(":tagname", $tag_name);
                 $result = $stmt->execute();
                 $con = null;
                 return $result;

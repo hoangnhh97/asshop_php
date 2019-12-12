@@ -519,9 +519,9 @@
 
         //Tags Management
         public function CreateNewTag() {
-            $product_id = Common::getPOST("txtProductId");
+            $product_id = Common::getPOST("ddlProduct");
             $tag_name = Common::getPOST("txtTagName");
-            if(empty($role_name) || empty($role_desc)) {
+            if(empty($product_id) || empty($tag_name)) {
                 $this->setAlert("Thêm thất bại. Vui lòng nhập đầy đủ thông tin!", "error");
                 return;
             }
@@ -540,7 +540,7 @@
 
 
         public function EditTag($tag_id) {
-            $product_id = Common::getPOST("txtProductId");
+            $product_id = Common::getPOST("ddlProduct");
             $tag_name = Common::getPOST("txtTagName");
 
             if(empty($product_id) || empty($tag_name)) {

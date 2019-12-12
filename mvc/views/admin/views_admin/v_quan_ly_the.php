@@ -82,11 +82,23 @@
                     ?>
                     <form action="<?php echo $root; ?>/Admin/QuanLyThe/Sua/<?php echo $values["tag_id"]; ?>" method="post" id="create-new-form" enctype="multipart/form-data">
                         <div class="row">
-                        <div class="form-group col-md-12">
-                                <input type="text" placeholder="Mã sản phẩm" value="<?php echo $values["product_id"]; ?>" name="txtName" class="form-control"/>
+                            
+                            <div class="form-group col-md-12">
+                                <input type="text" placeholder="Mã sản phẩm" value="<?php echo $values["product_id"]; ?>" name="txtTagName" class="form-control"/>
                             </div>
                             <div class="form-group col-md-12">
-                                <input type="text" placeholder="Tên quyền" value="<?php echo $values["tag_name"]; ?>" name="txtName" class="form-control"/>
+                                <?php 
+                                    $pd = $data["products"];
+                                ?>
+                                <select class="form-control" name="ddlProduct">
+                                    <option>--Chọn sản phẩm--</option>
+                                    <?php foreach($pd as $item)  { ?>
+                                        <option value="<?php echo $item["product_id"] ?>" <?php echo $values["product_id"]==$item["product_id"]?"selected":""; ?>><?php echo $item["name"]; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <input type="text" placeholder="Tên thẻ" value="<?php echo $values["tag_name"]; ?>" name="txtTagName" class="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -101,17 +113,26 @@
             <?php } else if($data["action"] == 1) { ?>
             <div class="card">
                 <div class="card-header">
-                    <h3>Thêm quyền</h3>
+                    <h3>Thêm thẻ</h3>
                 </div>
                 <div class="card-body">
                     <form action="<?php echo $root; ?>/Admin/QuanLyThe/Them" method="post" id="create-new-form">
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <input type="text" placeholder="Tên quyền" name="txtName" class="form-control"/>
+                                <input type="text" placeholder="Tên thẻ" name="txtTagName" class="form-control"/>
                             </div>
                             <div class="form-group col-md-12">
-                                <textarea type="text" placeholder="Mô tả" name="txtDesc" class="form-control" id="summernote"></textarea>
+                                <?php 
+                                    $pd = $data["products"];
+                                ?>
+                                <select class="form-control" name="ddlProduct">
+                                    <option>--Chọn sản phẩm--</option>
+                                    <?php foreach($pd as $item)  { ?>
+                                        <option value="<?php echo $item["product_id"] ?>"><?php echo $item["name"]; ?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
+                           
                         </div>
                         <div class="form-group">
                             <button type="submit" name="btnThem" class="btn btn-primary">Thêm</button>

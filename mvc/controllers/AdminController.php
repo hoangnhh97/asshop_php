@@ -166,6 +166,7 @@
             $redirect_root = Common::template_directory() . "/Admin/QuanLyThe";
             $action=0;
             $modelRole = $this->model("Tags");
+            $modelProduct = $this->model("Products");
             if(!empty($id)) {
                 if($param == "Sua") {
                     $action = 2;
@@ -187,10 +188,11 @@
             }
 
             if(isset($_POST["btnSua"])) {
-                $this->action->EditRole($id);
+                $this->action->EditTag($id);
             }
             $this->view("admin/views_admin/v_quan_ly_the", [
                 "action"=>$action,
+                "products"=>$modelProduct->get_All_Products(),
                 "singleTag"=>$modelRole->getSingleTag($id),
                 "tags"=>$modelRole->get_All_Tags(),
             ]);

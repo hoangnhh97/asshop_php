@@ -1,6 +1,6 @@
 <?php 
 
-class AboutUsController extends BaseController {
+class AboutUsController extends Controller {
     
 }
 ?>

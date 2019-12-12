@@ -10,7 +10,7 @@
             <div class="col-md-6">
                 <ul class="text-right">
                     <li><a href=""><i class="fa fa-map-marked"></i> Địa chỉ</a></li>
-                    <li><a href=""><i class="fas fa-truck"></i> Theo dõi đơn hàng</a></li>
+                    <li><a href="TheoDoiDonHang/Index"><i class="fas fa-truck"></i> Theo dõi đơn hàng</a></li>
                     <li><a href=""><i class="fa fa-shopping-bag"></i> Cửa hàng</a></li>
                     <?php if(empty($_SESSION["email"])) { ?>
                         <li><a href="javascript:;" data-toggle="modal" data-target="#form-user"><i class="fa fa-user"></i> Đăng nhập/Đăng ký</a></li>
