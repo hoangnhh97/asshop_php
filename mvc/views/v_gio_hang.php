@@ -39,7 +39,7 @@
                             <td><div class="quantity">
                                     <input type="number" name="list_item_quantity[]" value="<?php echo $values["item_quantity"]; ?>" min="1" max="50" step="1" value="1">
                                 </div></td>
-                            <td><?php echo $values["item_quantity"] .' x '. $values["item_price"]; ?></td>
+                            <td><?php echo $values["item_quantity"] .' x '. number_format($values["item_price"]); ?></td>
                             <td><?php echo number_format($values["item_price"] * $values["item_quantity"]); ?> <span>₫</span></td>
                             <td class="text-center">
                                     <input type="hidden" name="list_item_id[]" value="<?php echo $values["item_id"]; ?>"/>
