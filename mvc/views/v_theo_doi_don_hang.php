@@ -28,7 +28,7 @@
                             <?php echo $check_Order["shipping_date"]; ?>
                         </dd>
                         <dt>Tình trạng</dt>
-                        <dd>
+                        <dd class="badge badge-info p-2">
                             <?php if($check_Order["shipping_status"] == 0) { 
                                 echo 'Đang xử lý';
                             } else if($check_Order["shipping_status"] == 1) {

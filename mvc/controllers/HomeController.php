@@ -14,8 +14,11 @@ class HomeController extends Controller {
             "hotdeal1"=>$modelHotDeal->getHotDealByType(0),
             "hotdeal2"=>$modelHotDeal->getHotDealByType(0),
             "product1"=>$modelProduct->getAllProductAoLastest(),
+            "product2"=>$modelProduct->getAllProductLastestById(10),
             "productAoSoMi"=>$modelProduct->getAllProductByCate(2),
             "productAoThun"=>$modelProduct->getAllProductByCate(3),
+            "productDongHo"=>$modelProduct->getAllProductByCate(4),
+            "productTaiNghe"=>$modelProduct->getAllProductByCate(5),
             "categories"=>$modelCategory->get_All_Category()
             ]);
     }

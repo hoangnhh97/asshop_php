@@ -183,6 +183,23 @@
             }
         }
 
+        public function getAllProductLastestById($id) {
+            try {
+                $con = $this->getDB();
+                $query = "SELECT DISTINCT * FROM product_with_cate pwc, category c, products p 
+                        WHERE pwc.category_id=c.category_id AND pwc.product_id = p.product_id
+                        AND pwc.category_id = :cateid ORDER BY p.created_at LIMIT 5";
+                $stmt = $con->prepare($query);
+                $stmt->bindParam(":cateid", $id);
+                $stmt->execute();
+                $result = $stmt->fetchAll();
+                $con = null;
+                return $result;
+            } catch(PDOException $e) {
+                return array();
+            }
+        }
+
         //Get Limit 4 products
         public function getAllProductByCate($cate_id) {
             try {

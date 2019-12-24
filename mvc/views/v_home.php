@@ -37,9 +37,12 @@
             <?php 
                 foreach($values as $row) {
             ?> 
-            <div class="item">
-                <div class="cate-img">
-                    <a href="DanhMuc/Index/<?php echo Common::generateSlug($row["cate_name"]) ?>/<?php echo $row["category_id"] ?>"><img src="<?php echo Common::template_directory(); ?>/assets/images/categories/<?php echo $row["image"] ?>" /></a>
+            <div class="item text-center">
+                <div class="cate-img mb-3">
+                    <a href="DanhMuc/Index/<?php echo Common::generateSlug($row["cate_name"]) ?>/<?php echo $row["category_id"] ?>"><img src="<?php echo Common::template_directory(); ?>/assets/images/categories/<?php echo $row["image"] ?>" class="m-auto" /></a>
+                </div>
+                <div class="cate-name text-center">
+                    <a href="DanhMuc/Index/<?php echo Common::generateSlug($row["cate_name"]) ?>/<?php echo $row["category_id"] ?>"><?php echo $row["cate_name"] ?></a>
                 </div>
             </div>
             <?php } ?>
@@ -188,8 +191,8 @@
     </div>
 </section>
 <!--- END hot deal --->
-
-<section id="sec-clothes">
+<!-- BEGIN clothes -->
+<section id="sec-clothes" class="mb-5">
     <div class="container">
         <div class="h-title">
             <h2>Chuyên Các Loại Áo</h2>
@@ -349,6 +352,174 @@
         
     </div>
 </section>
+<!-- END clothes -->
+
+<!-- BEGIN Electronic -->
+
+<section id="sec-clothes">
+    <div class="container">
+        <div class="h-title">
+            <h2>Đồ Điện Tử</h2>
+            <div class="nav-list-tab float-right">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-electronic1-default-tab" data-toggle="pill" href="#pills-electronic1-default" role="tab" aria-controls="pills-home" aria-selected="true">Mới nhất</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-electronic2-tab" data-toggle="pill" href="#pills-electronic2" role="tab" aria-controls="pills-profile" aria-selected="false">Đồng hồ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-electronic3-tab" data-toggle="pill" href="#pills-electronic3" role="tab" aria-controls="pills-contact" aria-selected="false">Tai nghe</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+       <div class="clothes-content">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="<?php echo Common::template_directory(); ?>/assets/images/cat-left-banner02.png" width="100%"/>
+                </div>
+                <div class="tab-content col-md-9 pt-3 pb-3" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-electronic1-default" role="tabpanel" aria-labelledby="pills-electronic1-default-tab">
+                        <div class="row">
+                            <?php 
+                                $product2 = $data["product2"];
+                                foreach($product2 as $item) {
+                                    $permalink = Common::template_directory()."/SanPham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+                            ?>
+                            <div class="clothes-item col-md-4">
+                                <div class="clothes-item-inner">
+                                    <div class="clothes-item-head">
+                                        <a href="<?php Common::checkEmptyStr($permalink); ?>">
+                                            <img src="<?php echo Common::template_directory(); ?>/assets/images/products/<?php echo $item["image"]; ?>"/>
+                                        </a>
+                                    </div>
+                                    <div class="clothes-item-body">
+                                        <h3>
+                                            <a href="<?php Common::checkEmptyStr($permalink); ?>">
+                                                <?php Common::checkEmptyStr($item["name"]); ?>
+                                            </a>
+                                        </h3>
+                                        <p><?php Common::checkEmptyStr($item["description"]) ?></p>
+                                        <div class="price">
+                                            <span class="<?php echo Common::checkEmptyBoolean($item["new_price"])? "old-price": "primary-price" ?>">
+                                                <?php Common::checkEmptyStr(number_format($item["price"])); ?>
+                                                <span>₫</span>
+                                            </span>
+                                            <?php if(Common::checkEmptyBoolean($item["new_price"])) { ?>
+                                                <span class="primary-price">
+                                                    <?php Common::checkEmptyStr(number_format($item["new_price"])); ?>
+                                                    <span>₫</span> 
+                                                </span>
+                                            <?php } ?>
+                                        </div>
+                                        <div class="btn-control mt-3">
+                                            <span><a href="<?php echo Common::template_directory(); ?>/GioHang" class="btn-buy-now btn btn-primary" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>">Mua ngay</a></span>
+                                            <span><a href="javascript:;" class="btn-add-to-cart btn btn-warning" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>">Thêm vào giỏ hàng</a></span>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-electronic2" role="tabpanel" aria-labelledby="pills-electronic2-tab">
+                        <div class="row">
+                            <?php 
+                                $product2 = $data["productDongHo"];
+                                foreach($product2 as $item) {
+                                    $permalink = Common::template_directory()."/SanPham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+                            ?>
+                            <div class="clothes-item col-md-4">
+                                <div class="clothes-item-inner">
+                                    <div class="clothes-item-head">
+                                        <a href="<?php Common::checkEmptyStr($permalink); ?>">
+                                            <img src="<?php echo Common::template_directory(); ?>/assets/images/products/<?php echo $item["image"]; ?>"/>
+                                        </a>
+                                    </div>
+                                    <div class="clothes-item-body">
+                                        <h3>
+                                            <a href="<?php Common::checkEmptyStr($permalink); ?>">
+                                                <?php Common::checkEmptyStr($item["name"]); ?>
+                                            </a>
+                                        </h3>
+                                        <p><?php Common::checkEmptyStr($item["description"]) ?></p>
+                                        <div class="price">
+                                            <span class="<?php echo Common::checkEmptyBoolean($item["new_price"])? "old-price": "primary-price" ?>">
+                                                <?php Common::checkEmptyStr(number_format($item["price"])); ?>
+                                                <span>₫</span>
+                                            </span>
+                                            <?php if(Common::checkEmptyBoolean($item["new_price"])) { ?>
+                                                <span class="primary-price">
+                                                    <?php Common::checkEmptyStr(number_format($item["new_price"])); ?>
+                                                    <span>₫</span> 
+                                                </span>
+                                            <?php } ?>
+                                        </div>
+                                        <div class="btn-control mt-3">
+                                            <span><a href="<?php echo Common::template_directory(); ?>/GioHang" class="btn-buy-now btn btn-primary" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>">Mua ngay</a></span>
+                                            <span><a href="javascript:;" class="btn-add-to-cart btn btn-warning" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>">Thêm vào giỏ hàng</a></span>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-electronic3" role="tabpanel" aria-labelledby="pills-electronic3-tab">
+                        <div class="row">
+                            <?php 
+                                $product2 = $data["productTaiNghe"];
+                                foreach($product2 as $item) {
+                                    $permalink = Common::template_directory()."/SanPham/".Common::generateSlug($item["name"])."/".$item["product_id"]."";
+                            ?>
+                            <div class="clothes-item col-md-4">
+                                <div class="clothes-item-inner">
+                                    <div class="clothes-item-head">
+                                        <a href="<?php Common::checkEmptyStr($permalink); ?>">
+                                            <img src="<?php echo Common::template_directory(); ?>/assets/images/products/<?php echo $item["image"]; ?>"/>
+                                        </a>
+                                    </div>
+                                    <div class="clothes-item-body">
+                                        <h3>
+                                            <a href="<?php Common::checkEmptyStr($permalink); ?>">
+                                                <?php Common::checkEmptyStr($item["name"]); ?>
+                                            </a>
+                                        </h3>
+                                        <p><?php Common::checkEmptyStr($item["description"]) ?></p>
+                                        <div class="price">
+                                            <span class="<?php echo Common::checkEmptyBoolean($item["new_price"])? "old-price": "primary-price" ?>">
+                                                <?php Common::checkEmptyStr(number_format($item["price"])); ?>
+                                                <span>₫</span>
+                                            </span>
+                                            <?php if(Common::checkEmptyBoolean($item["new_price"])) { ?>
+                                                <span class="primary-price">
+                                                    <?php Common::checkEmptyStr(number_format($item["new_price"])); ?>
+                                                    <span>₫</span> 
+                                                </span>
+                                            <?php } ?>
+                                        </div>
+                                        <div class="btn-control mt-3">
+                                            <span><a href="<?php echo Common::template_directory(); ?>/GioHang" class="btn-buy-now btn btn-primary" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>">Mua ngay</a></span>
+                                            <span><a href="javascript:;" class="btn-add-to-cart btn btn-warning" data-id="<?php Common::checkEmptyStr($item["product_id"]); ?>">Thêm vào giỏ hàng</a></span>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+        
+    </div>
+</section>
+<!-- END Electronic -->
 
 
 <section id="partner-logo" class="pt-5 pb-5">
