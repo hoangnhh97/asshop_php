@@ -768,7 +768,8 @@ section#cart-detail table tr td a {
 
 .widget.widget-product-tags ul li {
     display: inline-block;
-    margin-right: 15px;
+    margin-right: 5px;
+    margin-bottom: 25px;
 }
 
 .widget.widget-product-tags ul li a {

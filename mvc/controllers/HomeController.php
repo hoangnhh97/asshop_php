@@ -6,7 +6,7 @@ class HomeController extends Controller {
     public function Index() {
         $modelHotDeal = $this->model("HotDeal");
         $modelProduct = $this->model("Products");
-        
+        $modelCategory = $this->model("Category");
 
         
 
@@ -16,6 +16,7 @@ class HomeController extends Controller {
             "product1"=>$modelProduct->getAllProductAoLastest(),
             "productAoSoMi"=>$modelProduct->getAllProductByCate(2),
             "productAoThun"=>$modelProduct->getAllProductByCate(3),
+            "categories"=>$modelCategory->get_All_Category()
             ]);
     }
 

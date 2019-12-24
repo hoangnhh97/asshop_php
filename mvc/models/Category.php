@@ -18,7 +18,7 @@
                 $stmt->bindParam(":catedesc", $desc);
                 $stmt->bindParam(":cateimage", $filename);
                 $result = $stmt->execute();
-
+                $stmt->debugDumpParams();
                 $con = null;
                 return $result;
             } catch(PDOException $e) {
@@ -37,7 +37,6 @@
                 $stmt->bindParam(":catedesc", $desc);
                 $stmt->bindParam(":cateimage", $filename);
                 $result = $stmt->execute();
-
                 $con = null;
                 return $result;
             } catch(PDOException $e) {

@@ -320,7 +320,7 @@
             $cate_name = Common::getPOST("txtCateName");
             $desc_name = Common::getPOST("txtDesc");
 
-            if(empty($cate_name) || empty($desc_name)) {
+            if(empty($cate_name)) {
                 $this->setAlert("Thêm thất bại. Vui lòng nhập đầy đủ thông tin!", "error");
                 return;
             }
@@ -329,7 +329,7 @@
                 $timeStamp =  $date->getTimestamp();
                 $fName = strtolower(pathinfo($_FILES["fUpload"]["name"],PATHINFO_FILENAME));
                 $imageFileType = strtolower(pathinfo($_FILES["fUpload"]["name"],PATHINFO_EXTENSION));
-                $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/asshop/assets/images/";
+                $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/asshop/assets/images/categories/";
                 $target_file = $target_dir . $fName . '_' . $timeStamp . '.' . $imageFileType;
                 $uploadOk = 1;
                 
@@ -385,7 +385,7 @@
             $cate_name = Common::getPOST("txtCateName");
             $desc_name = Common::getPOST("txtDesc");
 
-            if(empty($cate_name) || empty($desc_name)) {
+            if(empty($cate_name)) {
                 $this->setAlert("Cập nhật thất bại. Vui lòng nhập đầy đủ thông tin!", "error");
                 return;
             }
@@ -394,7 +394,7 @@
                 $timeStamp =  $date->getTimestamp();
                 $fName = strtolower(pathinfo($_FILES["fUpload"]["name"],PATHINFO_FILENAME));
                 $imageFileType = strtolower(pathinfo($_FILES["fUpload"]["name"],PATHINFO_EXTENSION));
-                $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/asshop/assets/images/";
+                $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/asshop/assets/images/categories/";
                 $target_file = $target_dir . $fName . '_' . $timeStamp . '.' . $imageFileType;
                 $uploadOk = 1;
                 

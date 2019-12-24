@@ -32,17 +32,17 @@
         <div class="h-title-gray">
             <h2>Danh mục sản phẩm <span>Chọn sản phẩm bạn đang tìm kiếm</span></h2>
         </div>
+        <?php $values = $data["categories"]; ?>
         <div class="owl-carousel owl-theme">
+            <?php 
+                foreach($values as $row) {
+            ?> 
             <div class="item">
                 <div class="cate-img">
-                    <a href=""><img src="<?php echo Common::template_directory(); ?>/assets/images/cat-balo.jpg" /></a>
+                    <a href="DanhMuc/Index/<?php echo Common::generateSlug($row["cate_name"]) ?>/<?php echo $row["category_id"] ?>"><img src="<?php echo Common::template_directory(); ?>/assets/images/categories/<?php echo $row["image"] ?>" /></a>
                 </div>
             </div>
-            <div class="item">
-                <div class="cate-img">
-                    <a href=""><img src="<?php echo Common::template_directory(); ?>/assets/images/cat-giay.jpg" /></a>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
 </section>
