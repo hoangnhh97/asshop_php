@@ -2,10 +2,10 @@
 -- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 13, 2019 lúc 01:17 PM
--- Phiên bản máy phục vụ: 10.4.8-MariaDB
--- Phiên bản PHP: 7.3.11
+-- Host: 127.0.0.1
+-- Generation Time: Dec 24, 2019 at 12:23 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `asshop`
+-- Database: `asshop`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
@@ -36,19 +36,19 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`category_id`, `cate_name`, `description`, `image`) VALUES
-(1, 'Áo', '<p>abc</p>', ''),
-(2, 'Áo Sơ Mi', NULL, NULL),
-(3, 'Áo Thun', NULL, NULL),
-(4, 'Áo Khoác', NULL, NULL);
+(1, 'Áo', '<p>abc</p>', 'cate-1_1577186031.jpg'),
+(2, 'Áo Sơ Mi', '', 'cate-2_1577186089.jpg'),
+(3, 'Áo Thun', '', 'cat-3_1577186102.jpg'),
+(4, 'Áo Khoác', '', 'cat-4_1577186135.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `contact`
+-- Table structure for table `contact`
 --
 
 CREATE TABLE `contact` (
@@ -63,7 +63,7 @@ CREATE TABLE `contact` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `hot_deal`
+-- Table structure for table `hot_deal`
 --
 
 CREATE TABLE `hot_deal` (
@@ -78,7 +78,7 @@ CREATE TABLE `hot_deal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `hot_deal`
+-- Dumping data for table `hot_deal`
 --
 
 INSERT INTO `hot_deal` (`hot_deal_id`, `product_id`, `type_num`, `days`, `hours`, `mins`, `secs`, `status`) VALUES
@@ -87,7 +87,7 @@ INSERT INTO `hot_deal` (`hot_deal_id`, `product_id`, `type_num`, `days`, `hours`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `orders`
+-- Table structure for table `orders`
 --
 
 CREATE TABLE `orders` (
@@ -105,7 +105,7 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `orders`
+-- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`order_id`, `user_id`, `full_name`, `order_email`, `order_phone`, `order_address`, `order_notes`, `shipping_date`, `shipping_status`, `payment_method`, `created_at`) VALUES
@@ -115,7 +115,7 @@ INSERT INTO `orders` (`order_id`, `user_id`, `full_name`, `order_email`, `order_
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `order_details`
+-- Table structure for table `order_details`
 --
 
 CREATE TABLE `order_details` (
@@ -127,7 +127,7 @@ CREATE TABLE `order_details` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `order_details`
+-- Dumping data for table `order_details`
 --
 
 INSERT INTO `order_details` (`order_detail_id`, `order_id`, `product_id`, `quantity`, `total`) VALUES
@@ -138,7 +138,7 @@ INSERT INTO `order_details` (`order_detail_id`, `order_id`, `product_id`, `quant
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
@@ -157,7 +157,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`product_id`, `name`, `description`, `short_desc`, `price`, `new_price`, `brand`, `model`, `image`, `type`, `created_at`, `status`) VALUES
@@ -167,7 +167,7 @@ INSERT INTO `products` (`product_id`, `name`, `description`, `short_desc`, `pric
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product_with_cate`
+-- Table structure for table `product_with_cate`
 --
 
 CREATE TABLE `product_with_cate` (
@@ -177,7 +177,7 @@ CREATE TABLE `product_with_cate` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `product_with_cate`
+-- Dumping data for table `product_with_cate`
 --
 
 INSERT INTO `product_with_cate` (`productwithcateid`, `product_id`, `category_id`) VALUES
@@ -189,7 +189,7 @@ INSERT INTO `product_with_cate` (`productwithcateid`, `product_id`, `category_id
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
@@ -199,7 +199,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`role_id`, `role_name`, `role_desc`) VALUES
@@ -209,7 +209,7 @@ INSERT INTO `roles` (`role_id`, `role_name`, `role_desc`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tags`
+-- Table structure for table `tags`
 --
 
 CREATE TABLE `tags` (
@@ -219,7 +219,7 @@ CREATE TABLE `tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tags`
+-- Dumping data for table `tags`
 --
 
 INSERT INTO `tags` (`tag_id`, `product_id`, `tag_name`) VALUES
@@ -230,7 +230,7 @@ INSERT INTO `tags` (`tag_id`, `product_id`, `tag_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -247,7 +247,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `email`, `pass`, `user_address`, `phone_number`, `user_type`, `role_id`, `created_at`) VALUES
@@ -255,36 +255,36 @@ INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `email`, `pass`, `use
 (23, 'Hoang', 'Nguyen', 'hoangnhh140697@gmail.com', '123', '', '0944114697', 1, 2, '2019-05-12');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`category_id`);
 
 --
--- Chỉ mục cho bảng `contact`
+-- Indexes for table `contact`
 --
 ALTER TABLE `contact`
   ADD PRIMARY KEY (`contact_id`);
 
 --
--- Chỉ mục cho bảng `hot_deal`
+-- Indexes for table `hot_deal`
 --
 ALTER TABLE `hot_deal`
   ADD PRIMARY KEY (`hot_deal_id`),
   ADD UNIQUE KEY `FOREIGN KEY` (`product_id`) USING BTREE;
 
 --
--- Chỉ mục cho bảng `orders`
+-- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`);
 
 --
--- Chỉ mục cho bảng `order_details`
+-- Indexes for table `order_details`
 --
 ALTER TABLE `order_details`
   ADD PRIMARY KEY (`order_detail_id`),
@@ -292,13 +292,13 @@ ALTER TABLE `order_details`
   ADD KEY `order_id` (`order_id`);
 
 --
--- Chỉ mục cho bảng `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`);
 
 --
--- Chỉ mục cho bảng `product_with_cate`
+-- Indexes for table `product_with_cate`
 --
 ALTER TABLE `product_with_cate`
   ADD PRIMARY KEY (`productwithcateid`),
@@ -306,121 +306,121 @@ ALTER TABLE `product_with_cate`
   ADD KEY `pwc_fkid_cateid` (`category_id`);
 
 --
--- Chỉ mục cho bảng `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`role_id`);
 
 --
--- Chỉ mục cho bảng `tags`
+-- Indexes for table `tags`
 --
 ALTER TABLE `tags`
   ADD PRIMARY KEY (`tag_id`),
   ADD KEY `product_id` (`product_id`);
 
 --
--- Chỉ mục cho bảng `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
   ADD KEY `FOREIGNKEY` (`role_id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT cho bảng `contact`
+-- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
   MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `hot_deal`
+-- AUTO_INCREMENT for table `hot_deal`
 --
 ALTER TABLE `hot_deal`
   MODIFY `hot_deal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `orders`
+-- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
   MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT cho bảng `order_details`
+-- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
   MODIFY `order_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT cho bảng `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT cho bảng `product_with_cate`
+-- AUTO_INCREMENT for table `product_with_cate`
 --
 ALTER TABLE `product_with_cate`
   MODIFY `productwithcateid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT cho bảng `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT cho bảng `tags`
+-- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
   MODIFY `tag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT cho bảng `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `hot_deal`
+-- Constraints for table `hot_deal`
 --
 ALTER TABLE `hot_deal`
   ADD CONSTRAINT `hotdeal_fkid_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
 
 --
--- Các ràng buộc cho bảng `order_details`
+-- Constraints for table `order_details`
 --
 ALTER TABLE `order_details`
   ADD CONSTRAINT `orderdetail_fkid_order` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
   ADD CONSTRAINT `orderdetail_fkid_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
 
 --
--- Các ràng buộc cho bảng `product_with_cate`
+-- Constraints for table `product_with_cate`
 --
 ALTER TABLE `product_with_cate`
   ADD CONSTRAINT `pwc_fkid_cateid` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`),
   ADD CONSTRAINT `pwc_fkid_productid` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
 
 --
--- Các ràng buộc cho bảng `tags`
+-- Constraints for table `tags`
 --
 ALTER TABLE `tags`
   ADD CONSTRAINT `tag_fkid_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
 
 --
--- Các ràng buộc cho bảng `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `user_fkid_role` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`);
